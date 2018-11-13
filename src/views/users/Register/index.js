@@ -8,8 +8,10 @@ class SignUp extends Component {
         return (
             <CenterCard>
                         <div className="card-content white-text">
+                            <TextInput id='first name'/>
+                            <TextInput id='last name'/>
                             <TextInput id='email'/>
-                            <TextInput id='username'/>
+                            <TextInput id='role' placeholder="Role | 'CONSUMER' or 'EXPORTER' or 'FARMER' or 'IMPORTER'"/>
                             <TextInput id='password' type='password'/>
                             <TextInput id='password' type='password' placeholder='Confirm password'/>
                         </div>
