@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "cfenv": "1.0.x",
     "express": "^4.16.4",
+    "material-icons": "^0.2.3",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
