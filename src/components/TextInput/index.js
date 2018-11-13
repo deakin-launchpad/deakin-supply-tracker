@@ -16,6 +16,7 @@ class TextInput extends Component {
                         type={props.type ? props.type : 'text'}
                         className="validate"
                         placeholder={capitalize(props.placeholder ? props.placeholder : props.id)}
+                        onChange={(e) => this.props.onChange(e.target.value)}
                     />
                 </div>
             </div>
