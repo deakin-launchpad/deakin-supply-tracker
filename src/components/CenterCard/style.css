@@ -1,15 +1,16 @@
-.login-container {
+.center-card-container {
     width: 100%;
     display: grid;
+    grid-template-columns: auto auto auto auto;
 }
 
-.login-grid {
-    grid-column: 2 / 3;
+.center-card-grid {
+    grid-column: 2 / 4;
     grid-row: 2 / 3;
 }
 
 @media screen and (max-width: 680px) {
-    .login-grid {
+    .center-card-grid {
         grid-column: 1 / 4;
         grid-row: 2 / 3;
     }
