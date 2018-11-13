@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: auto 50% auto;
+  grid-template-rows: 15% auto 10%;
+  height: 100vh;
 }
 
 .App-header {
@@ -11,4 +15,16 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.blank-header {
+  grid-column: 1 / 4;
+}
+
+.blank-footer {
+  grid-column: 1 / 4;
+}
+
+.blank-body {
+  grid-column: 1 / 4;
 }
