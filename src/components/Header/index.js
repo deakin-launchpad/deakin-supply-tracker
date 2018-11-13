@@ -8,7 +8,7 @@ class Header extends Component {
                 <div className="nav-wrapper">
                     <a href="/" className="brand-logo">Supply Chain</a>
                     <ul id="nav-mobile" className="right">
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="/user/login">Login</a></li>
                     </ul>
                 </div>
             </nav>
