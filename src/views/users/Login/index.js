@@ -8,7 +8,7 @@ class Login extends Component {
         return (
             <CenterCard>
                         <div className="card-content white-text">
-                            <TextInput id='username'/>
+                            <TextInput id='email'/>
                             <TextInput id='password' type='password'/>
                         </div>
                         <div className="card-action">
