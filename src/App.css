@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   display: grid;
-  grid-template-columns: auto 50% auto;
+  grid-template-columns: auto 25% 25% auto;
   grid-template-rows: 15% auto 10%;
   height: 100vh;
 }
@@ -18,13 +18,13 @@
 }
 
 .blank-header {
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
 }
 
 .blank-footer {
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
 }
 
 .blank-body {
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
 }
