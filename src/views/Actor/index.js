@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./style.css";
 
-class User extends Component {
+class Actor extends Component {
     render() {
         return (
             <div className="red-text">
@@ -11,4 +11,4 @@ class User extends Component {
     }
 }
 
-export default User;
+export default Actor;

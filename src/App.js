@@ -8,6 +8,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 import Header from "components/Header";
 import Footer from "components/Footer";
 import World from "views/World";
+import Login from "views/Login";
 
 class App extends Component {
   render() {
@@ -21,6 +22,10 @@ class App extends Component {
                   <Route
                       exact path='/'
                       component={SupplyChainLandingPage}
+                  />
+                  <Route
+                      path={'/user/login'}
+                      component={Login}
                   />
                   <Route
                       path={['/farmer', '/exporter', '/importer', '/consumer']}
