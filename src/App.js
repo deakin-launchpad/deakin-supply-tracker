@@ -11,7 +11,8 @@ import Footer from "components/Footer";
 // Import views
 import SupplyChainLandingPage from 'views/SupplyChainLandingPage';
 import World from "views/World";
-import Login from "views/Login";
+import Login from "views/users/Login";
+import UserRegister from "views/users/Register";
 import Actor from 'views/Actor';
 // Import local style sheet
 import './App.css';
@@ -32,6 +33,10 @@ class App extends Component {
                   <Route
                       path={'/user/login'}
                       component={Login}
+                  />
+                  <Route
+                      path={'/user/register'}
+                      component={UserRegister}
                   />
                   <Route
                       path={['/farmer', '/exporter', '/importer', '/consumer']}
