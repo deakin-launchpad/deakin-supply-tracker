@@ -1,0 +1,25 @@
+.farmer {
+    background-color: #baed91;
+}
+
+.exporter {
+    background-color: #b2cefe;
+}
+
+.importer {
+    background-color: #f8b88b;
+}
+
+.consumer {
+    background-color: #f2a2e8;
+}
+
+.world-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+    border: 1px solid;
+}
+
+

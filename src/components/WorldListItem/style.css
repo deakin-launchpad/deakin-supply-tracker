@@ -1,0 +1,6 @@
+.world-list-item-container {
+    display: flex;
+    align-items: start;
+    /*background-color: deepskyblue;*/
+    border: 1px solid;
+}
