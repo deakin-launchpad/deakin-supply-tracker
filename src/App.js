@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
 import SupplyChainLandingPage from 'views/SupplyChainLandingPage';
-import User from 'views/User';
+import Actor from 'views/Actor';
 import './App.css';
 import 'materialize-css'; // It installs the JS asset only
 import 'materialize-css/dist/css/materialize.min.css'
@@ -29,7 +29,7 @@ class App extends Component {
                   />
                   <Route
                       path={['/farmer', '/exporter', '/importer', '/consumer']}
-                      component={User}
+                      component={Actor}
                   />
                   <Route
                       path='/world'
