@@ -1,14 +1,20 @@
+// Import all libraries
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
-import SupplyChainLandingPage from 'views/SupplyChainLandingPage';
-import Actor from 'views/Actor';
-import './App.css';
+// Materialize
 import 'materialize-css'; // It installs the JS asset only
 import 'materialize-css/dist/css/materialize.min.css'
+
+// Import components
 import Header from "components/Header";
 import Footer from "components/Footer";
+// Import views
+import SupplyChainLandingPage from 'views/SupplyChainLandingPage';
 import World from "views/World";
 import Login from "views/Login";
+import Actor from 'views/Actor';
+// Import local style sheet
+import './App.css';
 
 class App extends Component {
   render() {
