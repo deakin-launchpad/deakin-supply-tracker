@@ -3,20 +3,27 @@ import CenterCard from 'components/CenterCard';
 import FlatButton from 'components/FlatButton/index';
 import TextInput from 'components/TextInput/index';
 import './style.css';
+// Import api.js
+import importedApi from 'api.js';
+const API = new importedApi();
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      emailId: '',
       password: '',
       confirmPassword: ''
     };
   }
 
-  handleEmailChange = (email) => {
+  performLogin = () => {
+    API.loginUser(this.state);
+  }
+
+  handleEmailChange = (emailId) => {
     this.setState({
-      email: email
+      emailId: emailId
     });
   }
 
@@ -43,7 +50,7 @@ class Login extends Component {
                       <div className="card-action">
                           <FlatButton 
                             text={'LOGIN'}
-
+                            onClick={this.performLogin}
                           />
                           <FlatButton href={'/user/register'} text={'SIGN UP'}/>
                       </div>
