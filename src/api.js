@@ -11,9 +11,12 @@ class API {
       password: data.password
     })
     .then((response) => {
-      console.log(response);
+      console.log(response.data.data.userDetails.role);
+      if (response.status === 200) {
+        window.location.href = "/" + response.data.data.userDetails.role.toLowerCase();
+      }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error.status));
   }
 
   registerUser (data) {
