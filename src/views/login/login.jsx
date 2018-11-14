@@ -44,7 +44,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log('propsmkmk',this.props)
     return (
       <div className="Login">
         <h1>

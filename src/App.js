@@ -34,12 +34,12 @@ class App extends Component {
   handler(state){
     console.log(state)
     this.setState(
-      {loggedIn:state}
+      state
     )
   }
   
   updateCounter(){
-    console.log(this.state.counter)
+    //console.log(this.state.counter)
     this.setState(
       {counter:this.state.counter+1}
     )
@@ -51,7 +51,7 @@ class App extends Component {
   render() {
     return (
       <div className="App" >
-        {this.state.loggedIn ? <Header title={this.state.title}/>:''}
+        {this.state.loggedIn ? <Header title={this.state.title} logout={this.handler}/>:''}
         <Main  user={this.state} handler={this.handler} counter={this.state.counter}/>
       </div>
     );
