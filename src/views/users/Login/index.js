@@ -34,28 +34,28 @@ class Login extends Component {
   }
 
   render () {
-      return (
-          <CenterCard>
-                      <div className="card-content white-text">
-                          <TextInput 
-                            id='email'
-                            onChange={this.handleEmailChange}
-                          />
-                          <TextInput 
-                            id='password' 
-                            type='password'
-                            onChange={this.handlePasswordChange}
-                            />
-                      </div>
-                      <div className="card-action">
-                          <FlatButton 
-                            text={'LOGIN'}
-                            onClick={this.performLogin}
-                          />
-                          <FlatButton href={'/user/register'} text={'SIGN UP'}/>
-                      </div>
-          </CenterCard>
-      );
+    return (
+      <CenterCard>
+        <div className="card-content white-text">
+          <TextInput 
+            id='email'
+            onChange={this.handleEmailChange}
+          />
+          <TextInput 
+            id='password' 
+            type='password'
+            onChange={this.handlePasswordChange}
+            />
+        </div>
+        <div className="card-action">
+          <FlatButton 
+            text={'LOGIN'}
+            onClick={this.performLogin}
+          />
+          <FlatButton href={'/user/register'} text={'SIGN UP'}/>
+        </div>
+      </CenterCard>
+    );
   }
 }
 
