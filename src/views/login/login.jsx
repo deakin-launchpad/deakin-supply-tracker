@@ -23,8 +23,9 @@ class Login extends Component {
         emailId: e.target.value
       });
   }
+
   handlePasswordChange=(e)=>{
-    console.log(e.target.id)
+    //console.log(e.target.id)
     this.setState({
       password: e.target.value
     });
