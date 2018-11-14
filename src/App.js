@@ -20,50 +20,48 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <div className="blank-header">
-              <Header/>
-          </div>
-          <div className="blank-body">
-              <Switch>
-                  <Route
-                      exact path='/'
-                      component={Login}
-                  />
-                  <Route
-                      path={'/user/login'}
-                      component={Login}
-                  />
-                  <Route
-                      path={'/user/register'}
-                      component={UserRegister}
-                  />
-                  <Route
-                      path={'/farmer'}
-                      component={Actor}
-                  />
-                  <Route
-                      path={'/exporter'}
-                      component={Actor}
-                  />
-                  <Route
-                      path={'/importer'}
-                      component={Actor}
-                  />
-                  <Route
-                      path={'/consumer'}
-                      component={Actor}
-                  />
-                  <Route
-                      path='/world'
-                      component={World}
-                  />
-
-              </Switch>
-          </div>
-          <div className="blank-footer">
-              <Footer/>
-          </div>
-
+        <div className="blank-header">
+          <Header/>
+        </div>
+        <div className="blank-body">
+          <Switch>
+            <Route
+              exact path='/'
+              component={Login}
+            />
+            <Route
+              path={'/user/login'}
+              component={Login}
+            />
+            <Route
+              path={'/user/register'}
+              component={UserRegister}
+            />
+            <Route
+              path={'/farmer'}
+              component={Actor}
+            />
+            <Route
+              path={'/exporter'}
+              component={Actor}
+            />
+            <Route
+              path={'/importer'}
+              component={Actor}
+            />
+            <Route
+              path={'/consumer'}
+              component={Actor}
+            />
+            <Route
+              path='/world'
+              component={World}
+            />
+          </Switch>
+        </div>
+        <div className="blank-footer">
+          <Footer/>
+        </div>
       </div>
     );
   }
