@@ -1,3 +1,6 @@
+import ImportedAppHelper from "helpers/AppHelper.js";
+const AppHelper = new ImportedAppHelper();
+
 const axios = require('axios').create({
   baseURL: 'http://35.163.217.253:8000/api/'
 });
@@ -11,9 +14,11 @@ class API {
       password: data.password
     })
     .then((response) => {
-      console.log(response.data.data.userDetails.role);
+      console.log(response.data);
       if (response.status === 200) {
-        window.location.href = "/" + response.data.data.userDetails.role.toLowerCase();
+        const userRole = response.data.data.userDetails.role.toLowerCase();
+        const accessToken = response.data.data.accessToken;
+        AppHelper.loginUser(true, userRole, accessToken);
       }
     })
     .catch((error) => console.log(error.status));

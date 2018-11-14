@@ -15,13 +15,34 @@ import UserRegister from "views/users/Register";
 import Actor from 'views/Actor';
 // Import local style sheet
 import './App.css';
+import ImportedAppHelper from "helpers/AppHelper.js";
+const AppHelper = new ImportedAppHelper();
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false
+    }
+  }
+
+  loginUser = () => {
+    this.setState({
+      loggedIn: true
+    });
+  }
+
+  logoutUser = () => {
+    this.setState({
+      loggedIn: false
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="blank-header">
-          <Header/>
+          <Header loggedIn={this.state.loggedIn}/>
         </div>
         <div className="blank-body">
           <Switch>
@@ -31,7 +52,13 @@ class App extends Component {
             />
             <Route
               path={'/user/login'}
-              component={Login}
+              component={(props) => <Login logoutUser={this.logoutUser()}/>}
+            />
+            <Route
+              path={'/user/logout'}
+              render={() => {
+                AppHelper.logoutUser();
+              }}
             />
             <Route
               path={'/user/register'}

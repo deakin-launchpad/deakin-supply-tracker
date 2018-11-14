@@ -39,7 +39,7 @@ class Footer extends Component {
                     </div>
                 </div>
                 <div className={this.rightBoxShouldShow()}>
-                    <div className="footer-right-box-item">Items </div>
+                    <div className="footer-right-box-item">Supplies&nbsp;</div>
                     <div className="footer-right-box-item"><FlatButton text=""/></div>
                 </div>
             </div>
