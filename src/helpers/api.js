@@ -6,24 +6,21 @@ const axios = require('axios').create({
 });
 
 class API {
-
   
   // POST requests
-  loginUser = (data,handler) => {
-    console.log(handler)
+  loginUser = (data, stateHandler) => {
+    console.log(data.password)
+    console.log(stateHandler)
     axios.post("user/login", {
-      emailId: 'navitchoudhary22@gmail.com',
-      password: '123456'
-    
-      //emailId: data.email,
-      //password: data.password
+      emailId: data.emailId,
+      password: data.password
     })
     .then((response) => {
-      console.log(response.data);
       if (response.status === 200) {
         const userRole = response.data.data.userDetails.role.toLowerCase();
         const accessToken = response.data.data.accessToken;
-        handler({loggedIn:true})
+        stateHandler({loggedIn: true});
+        console.log("Responseeeeeeeeeeee: " + response.data);
         AppHelper.loginUser(true, userRole, accessToken);
       }
     })
