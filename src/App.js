@@ -1,58 +1,69 @@
 import React, { Component } from 'react'
-import logo from './images/deakin-logo.svg'
-import simpleHelper from './helpers/simpleHelper'
 import Main from './views/main/main.jsx'
 import './App.css'
-import 'materialize-css'; // It installs the JS asset only
 import 'materialize-css/dist/css/materialize.min.css'
 import 'material-icons/iconfont/material-icons.css'
 import Header from 'components/header.jsx'
-
-
-
-let randomN=new simpleHelper()
-console.log(randomN.generateRandomNumber())
-console.log(randomN.generateRandomInt(10,1000))
-/*fetch('/api/hello').then((response)=>response.json()).then((responseJson)=>{
-  console.log('done')
-})*/
-
+import openSocket from 'socket.io-client';
+import ImportedAppHelper from "helpers/AppHelper.js";
+import Footer from 'components/footer.jsx';
+const AppHelper = new ImportedAppHelper();
+const socket = openSocket('http://35.163.217.253:8000');
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter:0,
-      loggedIn:false ,
-      loginRole:'',
-      accessToken:'',
-      title:'Deakin Supply'
-       };
-     this.handler=this.handler.bind(this)  
-     this.updateCounter=this.updateCounter.bind(this)
+      counter: 0,
+      loggedIn: false ,
+      loginRole: '',
+      accessToken: '',
+      title: 'Deakin Supply',
+      worldState: {}
+    };
   }
-  handler(state){
+  // Used to handle state from children
+  stateHandler = (state) => {
     console.log(state)
     this.setState(
       state
     )
   }
-  
-  updateCounter(){
-    //console.log(this.state.counter)
-    this.setState(
-      {counter:this.state.counter+1}
-    )
+
+  initSocket() {
+    console.log('initSocket()')
+    socket.on('connect', () => {
+      console.log('Client connected!')
+      socket.emit('worldstate');
+    })
+
+    socket.on('message', (data) => {
+      // console.log(data.message.data);
+      switch (data.message.type) {
+        case "worldstate":
+          this.setState({worldState: data.message.data});
+          break;
+      }
+      // console.log("THIS BITCH WORKS: " + this.state.worldState.consumed);
+      // console.log(this.state.worldState);
+    })
+    
+    socket.on('disconnect', () => {
+      console.log('Client connected!')
+    })
+
   }
-  componentDidMount(){
-      
-    setInterval(this.updateCounter,1000)
+
+  componentDidMount() {
+    this.initSocket()
   }
+
   render() {
     return (
       <div className="App" >
-        {this.state.loggedIn ? <Header title={this.state.title} logout={this.handler}/>:''}
-        <Main  user={this.state} handler={this.handler} counter={this.state.counter}/>
+        {this.state.loggedIn || AppHelper.isUserLoggedIn() !== 'false' ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
+        <Main  parentState={this.state} parentStateHandler={this.stateHandler}/>
+        {this.state.loggedIn || AppHelper.isUserLoggedIn() !== 'false' ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
       </div>
     );
   }
