@@ -3,9 +3,13 @@ import { history } from 'helpers/router';
 //history.push('/sample');
 class LocalStorageHelper {
   loginUser = (loggedIn, loginRole, accessToken) => {
+    // console.log('AppHelper.loginUser() called');
     window.localStorage.setItem("loggedIn", loggedIn);
     window.localStorage.setItem("loginRole", loginRole);
-    window.localStorage.setItem("accessToken", accessToken);  
+    window.localStorage.setItem("accessToken", accessToken);
+    // console.log(window.localStorage.getItem("loggedIn"));
+    // console.log(window.localStorage.getItem("loginRole"));
+    // console.log(window.localStorage.getItem("accessToken"));
     history.push('/'+loginRole)
   }
 
@@ -25,7 +29,7 @@ class LocalStorageHelper {
   }
 
   isUserLoggedIn = () => {
-    return window.localStorage.getItem("loggedIn");
+    return window.localStorage.getItem("loggedIn")
   }
 
   getUserRole = () => {
