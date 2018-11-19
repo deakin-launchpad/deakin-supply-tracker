@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Main from './views/main/main.jsx'
+import Main from 'views/main/main.jsx'
 import './App.css'
 import 'materialize-css/dist/css/materialize.min.css'
 import 'material-icons/iconfont/material-icons.css'
@@ -61,9 +61,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.loggedIn || AppHelper.isUserLoggedIn() !== 'false' ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
+        {AppHelper.isUserLoggedIn() ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
         <Main  parentState={this.state} parentStateHandler={this.stateHandler}/>
-        {this.state.loggedIn || AppHelper.isUserLoggedIn() !== 'false' ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
+        {AppHelper.isUserLoggedIn() ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
       </div>
     );
   }
