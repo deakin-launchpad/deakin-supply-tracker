@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import createHistory from 'history/createBrowserHistory';
 import { Router } from 'react-router';
