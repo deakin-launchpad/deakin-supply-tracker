@@ -15,9 +15,6 @@ class App extends Component {
     super(props);
     this.state = {
       counter: 0,
-      loggedIn: false ,
-      loginRole: '',
-      accessToken: '',
       title: 'Deakin Supply',
       worldState: {}
     };
