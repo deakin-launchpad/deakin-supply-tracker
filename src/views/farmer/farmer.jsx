@@ -10,7 +10,7 @@ class Farmer extends Component {
         <h2>Supplies</h2>
         <h3>At Consumer {this.props.parentProps.parentState.worldState.consumer}</h3>
         <h3>Warehouse {this.props.parentProps.parentState.worldState.farmer}</h3>
-        <a className="waves-effect waves-light btn" href={"javascript:;"}>Increase supplies</a>
+        <a className="waves-effect waves-light btn" href="#!">Increase supplies</a>
       </div>
     );
   }

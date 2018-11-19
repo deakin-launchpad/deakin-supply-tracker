@@ -11,8 +11,8 @@ class Consumer extends Component {
         <h2>Supplies</h2>
         <h3>At Importer {this.props.parentProps.parentState.worldState.importer}</h3>
         <h3>Warehouse {this.props.parentProps.parentState.worldState.consumer}</h3>
-        <a className="waves-effect waves-light btn">Buy From Exporter</a>
-        <a className="waves-effect waves-light btn">Consume Supplies</a>
+        <a className="waves-effect waves-light btn" href="#!">Buy From Exporter</a>
+        <a className="waves-effect waves-light btn" href="#!">Consume Supplies</a>
       </div>
     );
   }
