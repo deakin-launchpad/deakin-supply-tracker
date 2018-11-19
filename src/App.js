@@ -60,7 +60,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" >
+      <div className="App">
         {this.state.loggedIn || AppHelper.isUserLoggedIn() !== 'false' ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
         <Main  parentState={this.state} parentStateHandler={this.stateHandler}/>
         {this.state.loggedIn || AppHelper.isUserLoggedIn() !== 'false' ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
