@@ -15,7 +15,7 @@ class Header extends Component {
           <div className="nav-wrapper">
             <a href="#!" className="brand-logo">{this.props.title}</a>
             <ul className="right">
-             <li> <a onClick={this.logout } className="waves-effect waves-light btn">Logout</a></li>
+             <li> <a onClick={this.logout } className="waves-effect waves-light btn" href="#!">Logout</a></li>
             </ul>
           </div>
         </nav>
