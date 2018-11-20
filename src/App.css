@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-logo {
@@ -29,4 +30,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
