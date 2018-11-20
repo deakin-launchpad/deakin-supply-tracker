@@ -8,9 +8,39 @@ const axios = require('axios').create({
 class API {
   
   // POST requests
+
+  createItemRequest = (name, amount) => {
+    axios.post("crops/apicropscreateItemRequest", {
+      itemName: name,
+      itemAmount: amount
+    }, 
+    {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => console.log(error.status));
+  }
+
+  createItems = (name, amount, price) => {
+    axios.post("crops/apicropscreateItems", {
+      itemName: name,
+      itemAmount: amount,
+      price: price
+    }, 
+    {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => console.log(error.status));
+  }
+
   loginUser = (data, stateHandler) => {
-    console.log(data.password)
-    console.log(stateHandler)
+    // console.log(data.password)
+    // console.log(stateHandler)
     axios.post("user/login", {
       emailId: data.emailId,
       password: data.password
@@ -41,13 +71,24 @@ class API {
     .catch((error) => console.log(error));
   }
 
-  accessTokenLoginUser(data) {
-    axios.post("user/accessTokenLogin", {
-
-    });
+  accessTokenLoginUser = () => {
+    axios.post("user/accessTokenLogin", {}, {
+        headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
+    .then((response) => {
+      console.log("Response from accessTokenLoginUser(): " + response.status);
+      if (response.status === 200) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    .catch((error) => console.log(error));
   }
 
   // GET requests
 }
 
-export default API;
+const instance = new API();
+
+export default instance;
