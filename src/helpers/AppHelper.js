@@ -2,7 +2,7 @@ import { history } from 'helpers/router';
 import API from "helpers/api.js";
 // const API = new importedApi();
 
-class LocalStorageHelper {
+class AppHelper {
   constructor () {
     this.isUserAPILoggedIn = this.isUserAPILoggedIn.bind(this);
   }
@@ -119,4 +119,5 @@ class LocalStorageHelper {
 
 }
 
-export default LocalStorageHelper;
+const instance = new AppHelper();
+export default instance;

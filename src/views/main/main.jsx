@@ -6,8 +6,7 @@ import Importer from 'views/importer/importer.jsx'
 import Exporter from 'views/exporter/exporter.jsx'
 import Consumer from 'views/consumer/consumer.jsx'
 import World from 'views/world/world.jsx';
-import ImportedAppHelper from "helpers/AppHelper.js";
-const AppHelper = new ImportedAppHelper();
+import AppHelper from "helpers/AppHelper.js";
 
 class Main extends Component {
   render() {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ImportedAppHelper from "helpers/AppHelper.js";
-const AppHelper = new ImportedAppHelper();
+import AppHelper from "helpers/AppHelper.js";
 
 class Header extends Component {
   logout = () => {

@@ -1,5 +1,4 @@
-import ImportedAppHelper from "helpers/AppHelper.js";
-const AppHelper = new ImportedAppHelper();
+import AppHelper from "helpers/AppHelper.js";
 
 const axios = require('axios').create({
   baseURL: 'http://35.163.217.253:8000/api/'
