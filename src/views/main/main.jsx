@@ -19,19 +19,19 @@ class Main extends Component {
               // Next line is failsafe
               // this.props.parentState.loggedIn || AppHelper.isUserLoggedIn() ? (<Login {...props} parentProps={this.props}/>) : (<Login {...props} parentProps={this.props}/>)
               // Next line is what needs to be always working
-              this.props.parentState.loggedIn || AppHelper.isUserLoggedIn() !== 'false' ? (<Redirect to={'/' + AppHelper.getUserRole() }/>) : (<Login {...props} parentProps={this.props}/>)
+              this.props.parentState.loggedIn ? (<Redirect to={'/' + AppHelper.getUserRole() }/>) : (<Login {...props} parentProps={this.props}/>)
             )}/>
             <Route exact path='/farmer' render={ (props) =>
-              (this.props.parentState.loggedIn || AppHelper.isUserLoggedIn() && AppHelper.getUserRole() === 'farmer' ? (<Farmer {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
+              (this.props.parentState.loggedIn && AppHelper.getUserRole() === 'farmer' ? (<Farmer {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
             />
             <Route exact path='/exporter' render={ (props) =>
-              (this.props.parentState.loggedIn || AppHelper.isUserLoggedIn() && AppHelper.getUserRole() === 'exporter' ? (<Exporter {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
+              (this.props.parentState.loggedIn && AppHelper.getUserRole() === 'exporter' ? (<Exporter {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
             />
             <Route exact path='/importer' render={ (props) =>
-              (this.props.parentState.loggedIn || AppHelper.isUserLoggedIn() && AppHelper.getUserRole() === 'importer' ? (<Importer {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
+              (this.props.parentState.loggedIn && AppHelper.getUserRole() === 'importer' ? (<Importer {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
             />
             <Route exact path='/consumer' render={ (props) =>
-              (this.props.parentState.loggedIn || AppHelper.isUserLoggedIn() && AppHelper.getUserRole() === 'consumer' ? (<Consumer {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
+              (this.props.parentState.loggedIn && AppHelper.getUserRole() === 'consumer' ? (<Consumer {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
             />
             <Route exact path='/world' render={ (props) =>
               <World parentProps={this.props}/> } //Renamed user to parentProps in world.jsx as well

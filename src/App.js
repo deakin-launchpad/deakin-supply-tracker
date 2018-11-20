@@ -13,12 +13,15 @@ const socket = openSocket('http://35.163.217.253:8000');
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       counter: 0,
+      loggedIn: false, // temporary
       title: 'Deakin Supply',
       worldState: {}
     };
   }
+
   // Used to handle state from children
   stateHandler = (state) => {
     console.log(state)
@@ -52,15 +55,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.initSocket()
+    this.initSocket();
+    console.log('App.js componentDidMount()');
+    // first check localStorage values using AppHelper. 
+    // If all good, dispatch accessToken API call
+    // Following that, update redux status
+    AppHelper.isUserLoggedIn();
   }
 
   render() {
     return (
       <div className="App">
-        {AppHelper.isUserLoggedIn() ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
+        {this.state.loggedIn ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
         <Main  parentState={this.state} parentStateHandler={this.stateHandler}/>
-        {AppHelper.isUserLoggedIn() ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
+        {this.state.loggedIn ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
       </div>
     );
   }
