@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import importedApi from 'helpers/api.js';
-const API = new importedApi();
+import API from "helpers/api.js";
 
 class Login extends Component {
   constructor(props) {
@@ -42,7 +41,7 @@ class Login extends Component {
             <div className='col s6 offset-s3'>
               <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
               <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
-              <a className="waves-effect waves-light btn" onClick={this.performLogin}>
+              <a className="waves-effect waves-light btn" onClick={this.performLogin} href="#!">
                 <i className="material-icons left">cloud</i>Login
               </a>
             </div>
