@@ -5,18 +5,17 @@ import 'materialize-css/dist/css/materialize.min.css'
 import 'material-icons/iconfont/material-icons.css'
 import Header from 'components/header.jsx'
 import openSocket from 'socket.io-client';
-import ImportedAppHelper from "helpers/AppHelper.js";
+import AppHelper from "helpers/AppHelper.js";
 import Footer from 'components/footer.jsx';
-const AppHelper = new ImportedAppHelper();
+import { connect } from 'react-redux';
+import { requestAccessTokenLogin, setUserRole } from 'actions';
+import Login from 'views/login/login.jsx';
 const socket = openSocket('http://35.163.217.253:8000');
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      counter: 0,
-      loggedIn: false, // temporary
       title: 'Deakin Supply',
       worldState: {}
     };
@@ -31,9 +30,7 @@ class App extends Component {
   }
 
   initSocket() {
-    console.log('initSocket()')
     socket.on('connect', () => {
-      console.log('Client connected!')
       socket.emit('worldstate');
     })
 
@@ -42,6 +39,8 @@ class App extends Component {
       switch (data.message.type) {
         case "worldstate":
           this.setState({worldState: data.message.data});
+          break;
+        default:
           break;
       }
       // console.log("THIS BITCH WORKS: " + this.state.worldState.consumed);
@@ -56,22 +55,42 @@ class App extends Component {
 
   componentDidMount() {
     this.initSocket();
-    console.log('App.js componentDidMount()');
-    // first check localStorage values using AppHelper. 
-    // If all good, dispatch accessToken API call
-    // Following that, update redux status
-    AppHelper.isUserLoggedIn();
+
+    let token = ''
+    if ((token = AppHelper.isUserLocalStorageLoggedIn())) {
+      this.props.dispatchAccessTokenLogin(token)
+      .then((response) => {
+        const userRole = response.payload.data.data.userDetails.role.toLowerCase();
+        this.props.dispatchSetUserRole(userRole);
+      })
+    }
   }
 
   render() {
-    return (
+    if (this.props.loading) return (<div></div>);
+    else return (
       <div className="App">
-        {this.state.loggedIn ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
-        <Main  parentState={this.state} parentStateHandler={this.stateHandler}/>
-        {this.state.loggedIn ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
+        {this.props.loggedIn ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
+        {this.props.loggedIn ? <Main  parentState={this.state} parentStateHandler={this.stateHandler}/> : <Login parentProps={this.props}/>}
+        {this.props.loggedIn ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+      loggedIn : state.loginStatus.loggedIn,
+      loading : state.loginStatus.loading,
+      loginStatus : state.loginStatus
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchAccessTokenLogin : (token) => dispatch(requestAccessTokenLogin(token)),
+    dispatchSetUserRole : (userRole) => dispatch(setUserRole(userRole))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

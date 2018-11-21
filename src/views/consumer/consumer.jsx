@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class Consumer extends Component {
   render() {
-    console.log('consumer ', this.props)
     return (
       <div className="Consumer">
         <h1>

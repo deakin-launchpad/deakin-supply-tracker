@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import API from "helpers/api.js";
+import AppHelper from "helpers/AppHelper.js";
+import { connect } from 'react-redux';
+import { requestLogin, setUserRole } from 'actions';
 
 class Login extends Component {
   constructor(props) {
@@ -14,7 +16,6 @@ class Login extends Component {
   }
 
   handleEmailChange=(e)=>{
-    console.log(e.target.id)
     this.setState({
       emailId: e.target.value
     });
@@ -27,14 +28,20 @@ class Login extends Component {
   }
 
   performLogin = () => {
-    API.loginUser(this.state,this.props.parentProps.parentStateHandler)
+    this.props.dispatchLogin(this.state).then((response) => {
+      const userRole = response.payload.data.data.userDetails.role.toLowerCase();
+      const accessToken = response.payload.data.data.accessToken;
+      AppHelper.loginUser(true, userRole, accessToken);
+      this.props.dispatchSetUserRole(userRole);
+    });
+    // API.loginUser(this.state,this.props.parentProps.parentStateHandler)
   }
 
   render() {
     return (
       <div className="Login">
         <h1>
-          {this.props.parentProps.parentState.title}
+          {/* {this.props.parentProps.parentState.title} */} Hello
         </h1>
         <div className='row'>
           <div className='row'>
@@ -52,4 +59,11 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchLogin  : (data) => dispatch(requestLogin(data)),
+    dispatchSetUserRole : (userRole) => dispatch(setUserRole(userRole))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);
