@@ -1,4 +1,3 @@
-import { client } from "index.js"
 export const REQUEST_LOGIN = "REQUEST_LOGIN"
 export const REQUEST_LOGOUT = "REQUEST_LOGOUT"
 export const REQUEST_ACCESS_TOKEN_LOGIN = "REQUEST_ACCESS_TOKEN_LOGIN"

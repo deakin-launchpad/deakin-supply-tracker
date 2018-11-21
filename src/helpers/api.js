@@ -8,6 +8,16 @@ class API {
   
   // POST requests
 
+  buyItems = () => {
+    axios.post("crops/buyItems", {}, {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => console.log(error.status));
+  }
+
   createItemRequest = (name, amount) => {
     axios.post("crops/apicropscreateItemRequest", {
       itemName: name,
@@ -22,11 +32,11 @@ class API {
     .catch((error) => console.log(error.status));
   }
 
-  createItems = (name, amount, price) => {
-    axios.post("crops/apicropscreateItems", {
-      itemName: name,
-      itemAmount: amount,
-      price: price
+  createItems = (data) => {
+    axios.post("crops/createItems", {
+      itemName: data.name,
+      itemAmount: data.amount,
+      price: data.price
     }, 
     {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }

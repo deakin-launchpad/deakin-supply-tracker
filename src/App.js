@@ -23,7 +23,7 @@ class App extends Component {
 
   // Used to handle state from children
   stateHandler = (state) => {
-    console.log(state)
+    // console.log(state)
     this.setState(
       state
     )
@@ -32,6 +32,9 @@ class App extends Component {
   initSocket() {
     socket.on('connect', () => {
       socket.emit('worldstate');
+      setInterval(function(){
+        socket.emit('worldstate');
+      }, 5000);
     })
 
     socket.on('message', (data) => {
