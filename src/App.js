@@ -10,7 +10,7 @@ import Footer from 'components/footer.jsx';
 import { connect } from 'react-redux';
 import { requestAccessTokenLogin, setUserRole } from 'actions';
 import Login from 'views/login/login.jsx';
-const socket = openSocket('http://35.163.217.253:8000');
+const socket = openSocket('http://52.42.15.246:8000');
 
 class App extends Component {
   constructor(props) {
