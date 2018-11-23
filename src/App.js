@@ -34,7 +34,7 @@ class App extends Component {
       socket.emit('worldstate');
       setInterval(function(){
         socket.emit('worldstate');
-      }, 5000);
+      }, 60000);
     })
 
     socket.on('message', (data) => {
