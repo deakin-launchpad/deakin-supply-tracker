@@ -1,15 +1,12 @@
 import AppHelper from "helpers/AppHelper.js";
-
-const axios = require('axios').create({
-  baseURL: 'http://52.42.15.246:8000/api/'
-});
+import { client } from "index.js";
 
 class API {
   
   // POST requests
 
   buyItems = () => {
-    axios.post("crops/buyItems", {}, {
+    client.post("crops/buyItems", {}, {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
@@ -19,7 +16,7 @@ class API {
   }
 
   createItemRequest = (name, amount) => {
-    axios.post("crops/apicropscreateItemRequest", {
+    client.post("crops/apicropscreateItemRequest", {
       itemName: name,
       itemAmount: amount
     }, 
@@ -33,7 +30,7 @@ class API {
   }
 
   createItems = (data) => {
-    axios.post("crops/createItems", {
+    client.post("crops/createItems", {
       itemName: data.name,
       itemAmount: data.amount,
       price: data.price
@@ -50,7 +47,7 @@ class API {
   loginUser = (data, stateHandler) => {
     // console.log(data.password)
     // console.log(stateHandler)
-    axios.post("user/login", {
+    client.post("user/login", {
       emailId: data.emailId,
       password: data.password
     })
@@ -67,7 +64,7 @@ class API {
   }
 
   registerUser (data) {
-    axios.post("user/register", {
+    client.post("user/register", {
       firstName: data.firstName,
       lastName: data.lastName,
       emailId: data.emailId,
@@ -81,7 +78,7 @@ class API {
   }
 
   accessTokenLoginUser = () => {
-    axios.post("user/accessTokenLogin", {}, {
+    client.post("user/accessTokenLogin", {}, {
         headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {

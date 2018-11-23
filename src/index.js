@@ -10,8 +10,10 @@ import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 import rootReducer from 'reducers';
 
+export const baseURL = "http://52.42.15.246:8000/api/";
+
 export const client = axios.create({
-  baseURL: 'http://52.42.15.246:8000/api/',
+  baseURL: baseURL,
   responseType: 'json'
 });
 
