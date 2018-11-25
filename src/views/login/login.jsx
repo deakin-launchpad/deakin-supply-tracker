@@ -15,13 +15,13 @@ class Login extends Component {
     };
   }
 
-  handleEmailChange=(e)=>{
+  handleEmailChange=(e)=> {
     this.setState({
       emailId: e.target.value
     });
   }
 
-  handlePasswordChange=(e)=>{
+  handlePasswordChange=(e)=> {
     this.setState({
       password: e.target.value
     });
