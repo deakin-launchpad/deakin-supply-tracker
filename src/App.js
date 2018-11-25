@@ -7,6 +7,7 @@ import Header from 'components/header.jsx'
 import openSocket from 'socket.io-client';
 import AppHelper from "helpers/AppHelper.js";
 import Footer from 'components/footer.jsx';
+import LoadingComponent from 'components/loading/loading.jsx';
 import { connect } from 'react-redux';
 import { requestAccessTokenLogin, setUserRole } from 'actions';
 import Login from 'views/login/login.jsx';
@@ -71,7 +72,7 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.loading) return (<div></div>);
+    if (this.props.loading) return (<LoadingComponent/>);
     else return (
       <div className="App">
         {this.props.loggedIn ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
