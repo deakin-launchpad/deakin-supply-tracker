@@ -29,7 +29,7 @@ const store = createStore(rootReducer, enhancer);
 render(
   <Provider store={store}>
     <BrowserRouter>
-      <App client={client} />
+      <App/>
     </BrowserRouter>
   </Provider>
   , document.getElementById('root')
