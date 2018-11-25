@@ -1,12 +1,12 @@
 import AppHelper from "helpers/AppHelper.js";
-import { client } from "index.js";
+import { axiosClient } from "index.js";
 
 class API {
   
   // POST requests
 
   buyItems = () => {
-    client.post("crops/buyItems", {}, {
+    axiosClient.post("crops/buyItems", {}, {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
@@ -16,7 +16,7 @@ class API {
   }
 
   createItemRequest = (name, amount) => {
-    client.post("crops/apicropscreateItemRequest", {
+    axiosClient.post("crops/apicropscreateItemRequest", {
       itemName: name,
       itemAmount: amount
     }, 
@@ -30,7 +30,7 @@ class API {
   }
 
   createItems = (data) => {
-    client.post("crops/createItems", {
+    axiosClient.post("crops/createItems", {
       itemName: data.name,
       itemAmount: data.amount,
       price: data.price
@@ -45,7 +45,7 @@ class API {
   }
 
   registerUser (data) {
-    client.post("user/register", {
+    axiosClient.post("user/register", {
       firstName: data.firstName,
       lastName: data.lastName,
       emailId: data.emailId,

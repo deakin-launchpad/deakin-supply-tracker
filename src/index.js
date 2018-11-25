@@ -12,14 +12,14 @@ import rootReducer from 'reducers';
 
 export const baseURL = process.env.REACT_APP_BASE_URL + "/api";
 
-export const client = axios.create({
+export const axiosClient = axios.create({
   baseURL: baseURL,
   responseType: 'json'
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancer = composeEnhancers(
-  applyMiddleware(axiosMiddleware(client))
+  applyMiddleware(axiosMiddleware(axiosClient))
   
   // other store enhancers if any
 );
