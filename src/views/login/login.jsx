@@ -9,9 +9,7 @@ class Login extends Component {
     this.state = {
       emailId: '',
       password: '',
-      confirmPassword: '',
       isLoggedIn: false,
-      loginRole: ''
     };
   }
 
