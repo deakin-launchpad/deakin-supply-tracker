@@ -10,6 +10,7 @@ const REQUEST_ACCESS_TOKEN_LOGIN_FAIL = "REQUEST_ACCESS_TOKEN_LOGIN_FAIL"
 
 const login = (state = {loading: false, loggedIn: false, userRole: ''}, action) => {
   switch(action.type) {
+    // Login and accessTokenLogin
     case REQUEST_LOGIN:
     case REQUEST_ACCESS_TOKEN_LOGIN:
       return {...state, loading: true, loggedIn: false}
@@ -22,11 +23,11 @@ const login = (state = {loading: false, loggedIn: false, userRole: ''}, action) 
     case REQUEST_ACCESS_TOKEN_LOGIN_FAIL:
       return {...state, loading: false, loggedIn: false}
 
-
+    // Set user role
     case SET_USER_ROLE:
       return {...state, userRole: action.userRole}
 
-
+    // Logout
     case REQUEST_LOGOUT:
       return {...state, loading: false, loggedIn: false, userRole: ''}
 
