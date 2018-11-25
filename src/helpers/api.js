@@ -44,25 +44,6 @@ class API {
     .catch((error) => console.log(error.status));
   }
 
-  loginUser = (data, stateHandler) => {
-    // console.log(data.password)
-    // console.log(stateHandler)
-    client.post("user/login", {
-      emailId: data.emailId,
-      password: data.password
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        const userRole = response.data.data.userDetails.role.toLowerCase();
-        const accessToken = response.data.data.accessToken;
-        stateHandler({loggedIn: true});
-        console.log("Responseeeeeeeeeeee: " + response.data);
-        AppHelper.loginUser(true, userRole, accessToken);
-      }
-    })
-    .catch((error) => console.log(error.status));
-  }
-
   registerUser (data) {
     client.post("user/register", {
       firstName: data.firstName,
@@ -73,21 +54,6 @@ class API {
     })
     .then((response) => {
       console.log(response);
-    })
-    .catch((error) => console.log(error));
-  }
-
-  accessTokenLoginUser = () => {
-    client.post("user/accessTokenLogin", {}, {
-        headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
-    })
-    .then((response) => {
-      console.log("Response from accessTokenLoginUser(): " + response.status);
-      if (response.status === 200) {
-        return true;
-      } else {
-        return false;
-      }
     })
     .catch((error) => console.log(error));
   }
