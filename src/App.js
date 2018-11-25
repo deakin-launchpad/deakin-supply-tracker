@@ -76,7 +76,7 @@ class App extends Component {
     else return (
       <div className="App">
         {this.props.loggedIn ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
-        {this.props.loggedIn ? <Main  parentState={this.state} parentStateHandler={this.stateHandler}/> : <Login parentProps={this.props}/>}
+        {this.props.loggedIn ? <Main  parentState={this.state} parentStateHandler={this.stateHandler}/> : <Login parentState={this.state} parentProps={this.props}/>}
         {this.props.loggedIn ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
       </div>
     );
@@ -88,6 +88,9 @@ const mapStateToProps = (state) => {
       loggedIn : state.loginStatus.loggedIn,
       loading : state.loginStatus.loading,
       loginStatus : state.loginStatus
+      // Very strange behavior if I remove the above line, 
+      // even though loginStatus hasn't been used anywhere! Upon removing, the app
+      // wouldn't load Main component on first load
   }
 }
 

@@ -41,7 +41,7 @@ class Login extends Component {
     return (
       <div className="Login">
         <h1>
-          {/* {this.props.parentProps.parentState.title} */} Hello
+          {this.props.parentState.title}
         </h1>
         <div className='row'>
           <div className='row'>
