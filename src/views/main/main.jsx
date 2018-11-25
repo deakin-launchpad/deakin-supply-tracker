@@ -9,31 +9,39 @@ import Consumer from 'views/consumer/consumer.jsx'
 import World from 'views/world/world.jsx';
 import AppHelper from "helpers/AppHelper.js";
 
+const actors = {
+  farmer: Farmer,
+  exporter: Exporter,
+  importer: Importer,
+  consumer: Consumer
+}
 class Main extends Component {
+  
+  renderConditionalActor = (actorName, props) => {
+    var MyComponent = actors[actorName];
+    return (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn()) ? 
+      (
+        (this.props.userRole || AppHelper.getUserRole()) === actorName ? 
+        (<MyComponent {...props} parentProps={this.props}/>)
+        : (<Redirect to={'/' + (this.props.userRole || AppHelper.getUserRole()) }/>)
+      )
+    : (<Redirect to='/'/>)
+  }
+
   blah = () => {
     return (
       <div className="Main container">
        <Switch>
             <Route exact path='/' render={ (props) => (
-              // Next line is failsafe
-              // this.props.parentState.loggedIn || AppHelper.isUserLoggedIn() ? (<Login {...props} parentProps={this.props}/>) : (<Login {...props} parentProps={this.props}/>)
-              // Next line is what needs to be always working
+
               this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? (<Redirect to={'/' + (this.props.userRole || AppHelper.getUserRole()) }/>) : (<Login {...props} parentProps={this.props}/>)
             )}/>
-            <Route exact path='/farmer' render={ (props) =>
-              ((this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn()) && ((this.props.userRole || AppHelper.getUserRole()) === 'farmer') ? (<Farmer {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
-            />
-            <Route exact path='/exporter' render={ (props) =>
-              ((this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn()) && ((this.props.userRole || AppHelper.getUserRole()) === 'exporter') ? (<Exporter {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
-            />
-            <Route exact path='/importer' render={ (props) =>
-              ((this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn()) && ((this.props.userRole || AppHelper.getUserRole()) === 'importer') ? (<Importer {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
-            />
-            <Route exact path='/consumer' render={ (props) =>
-              ((this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn()) && ((this.props.userRole || AppHelper.getUserRole()) === 'consumer') ? (<Consumer {...props} parentProps={this.props}/>) : (<Redirect to='/'/>))}
-            />
-            <Route exact path='/world' render={ (props) =>
-              <World parentProps={this.props}/> } //Renamed user to parentProps in world.jsx as well
+            <Route exact path='/farmer' render={ (props) => this.renderConditionalActor('farmer', props)}/>
+            <Route exact path='/exporter' render={ (props) => this.renderConditionalActor('exporter', props)}/>
+            <Route exact path='/importer' render={ (props) => this.renderConditionalActor('importer', props)}/>
+            <Route exact path='/consumer' render={ (props) => this.renderConditionalActor('consumer', props)}/>
+            
+            <Route exact path='/world' render={ (props) => <World {...props} parentProps={this.props}/> }
             />
             
         </Switch>
@@ -42,7 +50,6 @@ class Main extends Component {
   }
 
   render() {
-    if (this.props.loading) return (<div></div>);
     return this.blah();
   }
 }
