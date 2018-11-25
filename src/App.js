@@ -10,7 +10,7 @@ import Footer from 'components/footer.jsx';
 import { connect } from 'react-redux';
 import { requestAccessTokenLogin, setUserRole } from 'actions';
 import Login from 'views/login/login.jsx';
-const socket = openSocket('http://52.42.15.246:8000');
+const socket = openSocket(process.env.REACT_APP_BASE_URL);
 
 class App extends Component {
   constructor(props) {
@@ -66,6 +66,7 @@ class App extends Component {
         const userRole = response.payload.data.data.userDetails.role.toLowerCase();
         this.props.dispatchSetUserRole(userRole);
       })
+      .catch ((error) => console.log(error));
     }
   }
 
