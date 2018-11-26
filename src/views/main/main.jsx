@@ -33,7 +33,6 @@ class Main extends Component {
       <div className="Main container">
        <Switch>
             <Route exact path='/' render={ (props) => (
-
               this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? (<Redirect to={'/' + (this.props.userRole || AppHelper.getUserRole()) }/>) : (<Login {...props} parentProps={this.props}/>)
             )}/>
             <Route exact path='/farmer' render={ (props) => this.renderConditionalActor('farmer', props)}/>
