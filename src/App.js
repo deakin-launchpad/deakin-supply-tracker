@@ -76,7 +76,7 @@ class App extends Component {
     else return (
       <div className="App">
         {this.props.loggedIn ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
-        {this.props.loggedIn ? <Main  parentState={this.state} parentStateHandler={this.stateHandler}/> : <Login parentState={this.state} parentProps={this.props}/>}
+        {this.props.loggedIn ? <Main parentState={this.state} parentStateHandler={this.stateHandler}/> : <Login parentState={this.state} parentProps={this.props}/>}
         {this.props.loggedIn ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
       </div>
     );
