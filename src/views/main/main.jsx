@@ -30,8 +30,9 @@ class Main extends Component {
 
   blah = () => {
     return (
-      <div className="Main container">
-       <Switch>
+      <main>
+        <div className="Main container">
+          <Switch>
             <Route exact path='/' render={ (props) => (
               this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? (<Redirect to={'/' + (this.props.userRole || AppHelper.getUserRole()) }/>) : (<Login {...props} parentProps={this.props}/>)
             )}/>
@@ -40,11 +41,10 @@ class Main extends Component {
             <Route exact path='/importer' render={ (props) => this.renderConditionalActor('importer', props)}/>
             <Route exact path='/consumer' render={ (props) => this.renderConditionalActor('consumer', props)}/>
             
-            <Route exact path='/world' render={ (props) => <World {...props} parentProps={this.props}/> }
-            />
-            
-        </Switch>
-      </div>
+            <Route exact path='/world' render={ (props) => <World {...props} parentProps={this.props}/> }/>
+          </Switch>
+        </div>
+      </main>
     );
   }
 
