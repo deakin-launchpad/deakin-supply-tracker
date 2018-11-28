@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import API from 'helpers/api.js';
+import bodyLogo from "images/farmer.png";
 
 class Exporter extends Component {
   buyItems = () => {
@@ -9,14 +10,43 @@ class Exporter extends Component {
   render() {
     console.log('Exporter ', this.props)
     return (
-      <div className="Exporter">
-        <h1>
+      <div className="Exporter bodyDiv">
+        <p className="titleText">
           Exporter
-        </h1>
-        <h2>Supplies</h2>
-        <h3>At Farmer {this.props.parentProps.parentState.worldState.farmer}</h3>
-        <h3>Warehouse {this.props.parentProps.parentState.worldState.exporter}</h3>
-        <a className="waves-effect waves-light btn" href="#!" onClick={this.buyItems}>Buy From Farmer</a>
+        </p>
+        <img className="bodyImg" src={bodyLogo} alt="Farmer"/>
+        <div className="mainDiv">
+          <div className="row">
+            <div className="col s12 boldFont">
+              Supplies
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s9">
+              <span className="text1"> At Farmer </span> <br/>
+              <span className="text2"> Supplies currently at the farmer </span>
+            </div>
+            <div className="col s3 ">
+              <div className="valueBox"> 
+                {this.props.parentProps.parentState.worldState.farmer}
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s9">
+              <span className="text1"> Warehouse </span> <br />
+              <span className="text2"> Supplies currently in Warehouse </span>
+            </div>
+            <div className="col s3">
+              <div className="valueBox">
+                {this.props.parentProps.parentState.worldState.exporter}
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <button className="waves-effect submitBtn waves-light btn" onClick={this.buyItems}>Buy From Farmer</button>
+          </div>
+        </div>
       </div>
     );
   }
