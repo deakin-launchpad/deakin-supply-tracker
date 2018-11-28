@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Main from 'views/main/main.jsx'
 import './App.css'
+import './views/view.css'
 import 'materialize-css/dist/css/materialize.min.css'
 import 'material-icons/iconfont/material-icons.css'
 import Header from 'components/header.jsx'
