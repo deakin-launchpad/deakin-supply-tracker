@@ -1,3 +1,6 @@
+:root{
+  --main-color:#0c8573
+}
 .App {
   text-align: center;
   height: 100vh;
@@ -32,8 +35,28 @@
   }
 }
 
-.Footer {
-  position: relative;
-  bottom: 0;
-  width: 100%;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.App {
+  flex: 1 0 auto;
+}
+
+nav, footer{
+  background-color: var(--main-color) !important
+}
+
+.btn {
+  background-color: #850c1e !important
+}
+
+footer {
+  z-index: 11;
+}
+
+.app-logo {
+  font-size: 100%
 }
