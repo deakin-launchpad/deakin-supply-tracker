@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from 'helpers/api.js';
 import Modal from 'components/modal.jsx';
+import bodyLogo from "images/farmer.png";
 
 class Farmer extends Component {
   constructor(props) {
@@ -43,15 +44,43 @@ class Farmer extends Component {
   }
   render() {
     return (
-      <div className="Farmer">
-        <h1>
+      <div className="Farmer bodyDiv">
+        <p className="titleText">
           Farmer
-        </h1>
-        <h2>Supplies</h2>
-        <h3>At Consumer {this.props.parentProps.parentState.worldState.consumer}</h3>
-        <h3>Warehouse {this.props.parentProps.parentState.worldState.farmer}</h3>
-        <button className="waves-effect waves-light btn modal-trigger" 
-          data-target="modal1">Increase Supplies</button>
+        </p>
+        <img className="bodyImg" src={bodyLogo} alt="Farmer"/>
+        <div className="mainDiv">
+          <div className="row">
+            <div className="col s12 boldFont">
+              Supplies
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s9">
+              <span className="text1"> At Consumer </span> <br/>
+              <span className="text2"> Supplies currently at the consumer </span>
+            </div>
+            <div className="col s3 ">
+              <div className="valueBox"> 
+              {this.props.parentProps.parentState.worldState.consumer}
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s9">
+              <span className="text1"> Warehouse </span> <br />
+              <span className="text2"> Supplies currently in your personal inventory </span>
+            </div>
+            <div className="col s3">
+              <div className="valueBox">
+                {this.props.parentProps.parentState.worldState.farmer}
+              </div>
+            </div>
+          </div>
+          <div className="row center-align">
+            <button className="waves-effect submitBtn waves-light btn modal-trigger" data-target="modal1">Increase Supplies</button>
+          </div>
+        </div>
         {this.renderModal()}
       </div>
     );
