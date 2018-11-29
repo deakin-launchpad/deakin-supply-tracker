@@ -24,7 +24,7 @@ class World extends Component {
         </p>
         <div className="containerDiv">
           <div className="row">
-            <div className="col s9">
+            <div className="col s9 pad-top">
               Farmer
             </div>
             <div className="col s3">
@@ -34,7 +34,7 @@ class World extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col s9">
+            <div className="col s9 pad-top">
               Exporter
             </div>
             <div className="col s3">
@@ -44,7 +44,7 @@ class World extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col s9">
+            <div className="col s9 pad-top">
               Importer
             </div>
             <div className="col s3">
@@ -54,7 +54,7 @@ class World extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col s9">
+            <div className="col s9 pad-top">
               Consumer
             </div>
             <div className="col s3">
@@ -64,7 +64,7 @@ class World extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col s9">
+            <div className="col s9 pad-top">
               In the World
             </div>
             <div className="col s3">
@@ -78,7 +78,7 @@ class World extends Component {
           Lifetime
         </p>
         <div className="row">
-            <div className="col s9">
+            <div className="col s9 pad-top">
               Produced
             </div>
             <div className="col s3">
@@ -88,7 +88,7 @@ class World extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col s9">
+            <div className="col s9 pad-top">
               Consumed
             </div>
             <div className="col s3">
