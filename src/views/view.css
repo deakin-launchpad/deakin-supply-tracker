@@ -45,19 +45,10 @@
   width: 65px;
 }
 
-.page-footer {
-  padding-top: 0px;
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-  
-}
-
 @media only screen and (max-width: 600px) {
   .submitBtn {
     width: 100%;
     display:inline-block;
-    padding-left: 10px;
     text-align: center
   }
 }
