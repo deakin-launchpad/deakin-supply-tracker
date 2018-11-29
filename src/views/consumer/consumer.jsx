@@ -42,9 +42,10 @@ class Consumer extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="row center">
             <button className="waves-effect submitBtn waves-light btn" onClick={this.buyItems}>Buy From Importer</button>
-            <button className="waves-effect submitBtn waves-light btn">Consume Supplies</button>
+            <br />
+            <button className="waves-effect submitBtn waves-light btn margin-top">Consume Supplies</button>
           </div>
         </div>
       </div>
