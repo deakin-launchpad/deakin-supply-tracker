@@ -10,11 +10,11 @@ class Consumer extends Component {
   render() {
     return (
       <div className="Consumer bodyDiv">
-        <p className="titleText">
+        <p className="heading">
           Consumer
         </p>
         <img className="bodyImg" src={bodyLogo} alt="Farmer"/>
-        <div className="mainDiv">
+        <div className="containerDiv">
           <div className="row">
             <div className="col s12 boldFont">
               Supplies
@@ -22,8 +22,8 @@ class Consumer extends Component {
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text1"> At Importer </span> <br/>
-              <span className="text2"> Supplies currently at the importer</span>
+              <span className="text"> At Importer </span> <br/>
+              <span className="subText"> Supplies currently at the importer</span>
             </div>
             <div className="col s3 ">
               <div className="valueBox"> 
@@ -33,8 +33,8 @@ class Consumer extends Component {
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text1"> Warehouse </span> <br />
-              <span className="text2"> Supplies currently in Warehouse </span>
+              <span className="text"> Warehouse </span> <br />
+              <span className="subText"> Supplies currently in Warehouse </span>
             </div>
             <div className="col s3">
               <div className="valueBox">

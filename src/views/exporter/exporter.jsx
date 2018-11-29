@@ -11,11 +11,11 @@ class Exporter extends Component {
     console.log('Exporter ', this.props)
     return (
       <div className="Exporter bodyDiv">
-        <p className="titleText">
+        <p className="heading">
           Exporter
         </p>
         <img className="bodyImg" src={bodyLogo} alt="Farmer"/>
-        <div className="mainDiv">
+        <div className="containerDiv">
           <div className="row">
             <div className="col s12 boldFont">
               Supplies
@@ -23,8 +23,8 @@ class Exporter extends Component {
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text1"> At Farmer </span> <br/>
-              <span className="text2"> Supplies currently at the farmer </span>
+              <span className="text"> At Farmer </span> <br/>
+              <span className="subText"> Supplies currently at the farmer </span>
             </div>
             <div className="col s3 ">
               <div className="valueBox"> 
@@ -34,8 +34,8 @@ class Exporter extends Component {
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text1"> Warehouse </span> <br />
-              <span className="text2"> Supplies currently in Warehouse </span>
+              <span className="text"> Warehouse </span> <br />
+              <span className="subText"> Supplies currently in Warehouse </span>
             </div>
             <div className="col s3">
               <div className="valueBox">

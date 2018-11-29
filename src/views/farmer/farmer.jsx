@@ -60,11 +60,11 @@ class Farmer extends Component {
   render() {
     return (
       <div className="Farmer bodyDiv">
-        <p className="titleText">
+        <p className="heading">
           Farmer
         </p>
         <img className="bodyImg" src={bodyLogo} alt="Farmer"/>
-        <div className="mainDiv">
+        <div className="containerDiv">
           <div className="row">
             <div className="col s12 boldFont">
               Supplies
@@ -72,8 +72,8 @@ class Farmer extends Component {
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text1"> At Consumer </span> <br/>
-              <span className="text2"> Supplies currently at the consumer </span>
+              <span className="text"> At Consumer </span> <br/>
+              <span className="subText"> Supplies currently at the consumer </span>
             </div>
             <div className="col s3 ">
               <div className="valueBox"> 
@@ -83,8 +83,8 @@ class Farmer extends Component {
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text1"> Warehouse </span> <br />
-              <span className="text2"> Supplies currently in your personal inventory </span>
+              <span className="text"> Warehouse </span> <br />
+              <span className="subText"> Supplies currently in your personal inventory </span>
             </div>
             <div className="col s3">
               <div className="valueBox">

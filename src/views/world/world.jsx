@@ -16,13 +16,13 @@ class World extends Component {
   render() {
     return (
       <div className="World bodyDiv">
-        <p className="titleText">
+        <p className="heading">
           World view
         </p>
-        <p className="titleText">
+        <p className="subHeading">
           Supplies
         </p>
-        <div className="mainDiv">
+        <div className="containerDiv">
           <div className="row">
             <div className="col s9">
               Farmer
@@ -74,7 +74,7 @@ class World extends Component {
             </div>
           </div>
         <div className="divider"></div>
-        <p className="titleText center">
+        <p className="subHeading center customStyle">
           Lifetime
         </p>
         <div className="row">
