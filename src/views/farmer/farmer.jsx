@@ -22,13 +22,28 @@ class Farmer extends Component {
   renderModal = () => {
     return (
       <Modal title="Create items" id='modal1'>
-        <div className="input-field col s6">
-          <input placeholder="Name" id="name" type="text" 
-            className="validate" onChange={this.handleChange} value={this.state.name}/>
-          <input placeholder="Amount" id="amount" type="text" 
-            className="validate" onChange={this.handleChange} value={this.state.amount}/>
-          <input placeholder="Price" id="price" type="text" 
-            className="validate" onChange={this.handleChange} value={this.state.price}/>
+        <div className="row">
+          <form className="col s12">
+            <div className="row">
+                <div className="input-field col s12">
+                  <i className="material-icons prefix">account_circle</i>
+                  <input placeholder="Name" id="name" type="text" className="validate" onChange={this.handleChange} value={this.state.name}/>
+                  <label className="active" htmlFor="name">Name</label>
+                </div>
+              </div>
+            <div className="row">
+              <div className="input-field col s6">
+                <i className="material-icons prefix">attach_money</i>
+                <input placeholder="Price" id="price" type="number" className="validate" onChange={this.handleChange} value={this.state.price}/>
+                <label className="active" htmlFor="price">Price</label>
+              </div>
+              <div className="input-field col s6">
+                <i className="material-icons prefix">shop</i>
+                <input id="amount" type="number" className="validate" onChange={this.handleChange} value={this.state.amount}/>
+                <label className="active" htmlFor="amount">Amount</label>
+              </div>
+            </div>
+          </form>
         </div>
         <div className="modal-footer">
           <a href="#!" className="modal-close waves-effect waves-light btn-flat">Cancel</a>
