@@ -4,6 +4,9 @@
 .App {
   text-align: center;
   height: 100vh;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -35,13 +38,7 @@
   }
 }
 
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.App {
+main {
   flex: 1 0 auto;
 }
 
