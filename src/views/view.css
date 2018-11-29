@@ -65,9 +65,20 @@
   padding-top: 8px !important;
 }
 
+.margin-top {
+  margin-top: 4px;
+}
 @media only screen and (max-width: 600px) {
   .submitBtn {
     width: 100%;
+    display:inline-block;
+    text-align: center
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .submitBtn {
+    width: 300px;
     display:inline-block;
     text-align: center
   }
