@@ -6,6 +6,7 @@ import Farmer from 'views/farmer/farmer.jsx'
 import Importer from 'views/importer/importer.jsx'
 import Exporter from 'views/exporter/exporter.jsx'
 import Consumer from 'views/consumer/consumer.jsx'
+import  ItemHistory from 'views/itemhistory/itemhistory.jsx';
 import World from 'views/world/world.jsx';
 import AppHelper from "helpers/AppHelper.js";
 
@@ -40,9 +41,8 @@ class Main extends Component {
             <Route exact path='/importer' render={ (props) => this.renderConditionalActor('importer', props)}/>
             <Route exact path='/consumer' render={ (props) => this.renderConditionalActor('consumer', props)}/>
             
-            <Route exact path='/world' render={ (props) => <World {...props} parentProps={this.props}/> }
-            />
-            
+            <Route exact path='/world' render={ (props) => <World {...props} parentProps={this.props}/> }/>
+            <Route exact path='/itemhistory/:itemId' render={(props) => <ItemHistory {...props} parentProps={this.props}/>}/>
         </Switch>
       </div>
     );

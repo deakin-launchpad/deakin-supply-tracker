@@ -58,6 +58,17 @@ class API {
     .catch((error) => console.log(error));
   }
 
+  getItemHistory (data, stateHandler) {
+    axiosClient.get("crops/getItemHistory?itemId="+data.itemId)
+    .then((response) => {
+      console.log(response.data.data);
+      stateHandler({
+        temp: response.data.data.data
+      })
+    })
+    .catch((error) => console.log(error));
+  }
+
   // GET requests
 }
 
