@@ -246,6 +246,10 @@ Vertical Timeline - by CodyHouse.co
   line-height: 1.6;
 }
 
+.cd-timeline__content ul{
+  text-align: left;
+}
+
 .cd-timeline__read-more,
 .cd-timeline__date {
   display: inline-block;

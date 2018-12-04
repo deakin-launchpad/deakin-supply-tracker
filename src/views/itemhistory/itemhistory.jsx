@@ -40,7 +40,7 @@ class ItemHistory extends Component {
 
 
   render() {
-      {console.log(">>>>>.",this.state.temp,this.state)}
+      {console.log(">>>>>.",this.state.temp)}
       if (this.state.temp.length === 0) return (<LoadingComponent/>);
     return (
         <div className="itemHistory">
@@ -54,8 +54,14 @@ class ItemHistory extends Component {
                                 </div>
                        
                                 <div className="cd-timeline__content js-cd-content">
-                                    <h3>Title of section 1</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                                    <h3>Item Details</h3>
+                                    <ul>
+                                        <li>Transaction Type: {value.transactionType}</li>
+                                        <li>ItemId: {value.itemId}</li>
+                                        <li>OwnerId: {value.ownerId}</li>
+                                        <li>SupplierId: {value.supplierId}</li>
+                                        <li>Item Exchanged: {value.itemExchanged}</li>
+                                    </ul>
                                     <span className="cd-timeline__date">{value.currentTime}</span>
                                 </div>
                             </div> 
