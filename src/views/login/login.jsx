@@ -10,7 +10,16 @@ class Login extends Component {
       emailId: '',
       password: '',
       isLoggedIn: false,
+      error: false,
     };
+  }
+
+  errorMessage = () => {
+    if(this.state.error) {
+      return (
+        <p><b>Invalid credentials!</b></p>
+      )
+    }
   }
 
   handleEmailChange=(e)=> {
@@ -23,6 +32,18 @@ class Login extends Component {
     this.setState({
       password: e.target.value
     });
+  }
+
+  validationCheck = () => {
+    let email = this.state.emailId
+    let password = this.state.password
+    if ((email.length > 0) && (password.length > 0)) {
+      this.performLogin()
+    } else {
+      this.setState({
+        error: true
+      })
+    }
   }
 
   performLogin = () => {
@@ -46,9 +67,8 @@ class Login extends Component {
             <div className='col s6 offset-s3'>
               <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
               <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
-              <a className="waves-effect waves-light btn" onClick={this.performLogin} href="#!">
-                <i className="material-icons left">cloud</i>Login
-              </a>
+              {this.errorMessage()}
+              <a className="waves-effect waves-light btn" onClick={this.validationCheck} href="#!"> Login </a>
             </div>
           </div>
         </div>
