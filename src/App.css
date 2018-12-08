@@ -246,7 +246,7 @@ Vertical Timeline - by CodyHouse.co
   line-height: 1.6;
 }
 
-.cd-timeline__content ul{
+.cd-timeline__content h3 ,.cd-timeline__content ul{
   text-align: left;
 }
 
