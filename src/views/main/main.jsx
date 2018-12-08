@@ -43,15 +43,10 @@ class Main extends Component {
             <Route exact path='/consumer' render={ (props) => this.renderConditionalActor('consumer', props)}/>
             
             <Route exact path='/world' render={ (props) => <World {...props} parentProps={this.props}/> }/>
-<<<<<<< HEAD
             <Route exact path='/itemhistory/:itemId' render={(props) => <ItemHistory {...props} parentProps={this.props}/>}/>
         </Switch>
-      </div>
-=======
-          </Switch>
         </div>
       </main>
->>>>>>> d707dcfd0d887101f73a96315a81635ac64136cb
     );
   }
 
