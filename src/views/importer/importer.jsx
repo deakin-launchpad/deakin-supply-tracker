@@ -43,7 +43,7 @@ class Importer extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="row center-align">
             <button className="waves-effect submitBtn waves-light btn" onClick={this.buyItems}>Buy From Exporter</button>
           </div>
         </div>
