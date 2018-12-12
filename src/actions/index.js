@@ -2,6 +2,7 @@ export const REQUEST_LOGIN = "REQUEST_LOGIN"
 export const REQUEST_LOGOUT = "REQUEST_LOGOUT"
 export const REQUEST_ACCESS_TOKEN_LOGIN = "REQUEST_ACCESS_TOKEN_LOGIN"
 export const SET_USER_ROLE = "SET_USER_ROLE"
+export const SET_USER_GOODS = "SET_USER_GOODS"
 
 export const requestLogin = (data) => ({
   type: REQUEST_LOGIN,
@@ -37,4 +38,9 @@ export const requestLogout = () => ({
 export const setUserRole = (userRole) => ({
   type: SET_USER_ROLE,
   userRole: userRole
+})
+
+export const setUserGoods = (userGoods) => ({
+  type: SET_USER_GOODS,
+  userGoods: userGoods
 })

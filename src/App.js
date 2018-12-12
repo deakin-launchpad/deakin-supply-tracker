@@ -10,7 +10,7 @@ import AppHelper from "helpers/AppHelper.js";
 import Footer from 'components/footer.jsx';
 import LoadingComponent from 'components/loading/loading.jsx';
 import { connect } from 'react-redux';
-import { requestAccessTokenLogin, setUserRole } from 'actions';
+import { requestAccessTokenLogin, setUserRole, setUserGoods } from 'actions';
 import Login from 'views/login/login.jsx';
 const socket = openSocket(process.env.REACT_APP_BASE_URL);
 
@@ -66,7 +66,9 @@ class App extends Component {
       this.props.dispatchAccessTokenLogin(token)
       .then((response) => {
         const userRole = response.payload.data.data.userDetails.role.toLowerCase();
+        const userGoods = response.payload.data.data.userDetails.warehouse;
         this.props.dispatchSetUserRole(userRole);
+        this.props.dispatchSetUserGoods(userGoods);
       })
       .catch ((error) => console.log(error));
     }
@@ -98,7 +100,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchAccessTokenLogin : (token) => dispatch(requestAccessTokenLogin(token)),
-    dispatchSetUserRole : (userRole) => dispatch(setUserRole(userRole))
+    dispatchSetUserRole : (userRole) => dispatch(setUserRole(userRole)),
+    dispatchSetUserGoods: (userGoods) => dispatch(setUserGoods(userGoods))
   }
 }
 

@@ -59,7 +59,7 @@ class API {
   }
 
   getItemHistory (data, stateHandler) {
-    axiosClient.get("crops/getItemHistory?itemId="+data.itemId)
+    axiosClient.get("crops/getItemHistory/"+data.itemId)
     .then((response) => {
       stateHandler({
         temp: response.data.data.data

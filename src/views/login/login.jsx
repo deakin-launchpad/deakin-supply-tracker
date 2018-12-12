@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppHelper from "helpers/AppHelper.js";
 import { connect } from 'react-redux';
-import { requestLogin, setUserRole } from 'actions';
+import { requestLogin, setUserRole, setUserGoods } from 'actions';
 
 class Login extends Component {
   constructor(props) {
@@ -65,8 +65,10 @@ class Login extends Component {
       }
       const userRole = response.payload.data.data.userDetails.role.toLowerCase();
       const accessToken = response.payload.data.data.accessToken;
+      const userGoods = response.payload.data.data.userDetails.warehouse;
       AppHelper.loginUser(true, userRole, accessToken);
       this.props.dispatchSetUserRole(userRole);
+      this.props.dispatchSetUserGoods(userGoods);
     }).catch((error) => {
       console.log(error)
     });
@@ -97,7 +99,8 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchLogin: (data) => dispatch(requestLogin(data)),
-    dispatchSetUserRole: (userRole) => dispatch(setUserRole(userRole))
+    dispatchSetUserRole: (userRole) => dispatch(setUserRole(userRole)),
+    dispatchSetUserGoods: (userGoods) => dispatch(setUserGoods(userGoods))
   }
 }
 

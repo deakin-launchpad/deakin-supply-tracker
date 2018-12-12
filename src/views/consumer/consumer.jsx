@@ -38,7 +38,7 @@ class Consumer extends Component {
             </div>
             <div className="col s3">
               <div className="valueBox">
-                {this.props.parentProps.parentState.worldState.consumer}
+                {this.props.parentProps.userGoods}
               </div>
             </div>
           </div>

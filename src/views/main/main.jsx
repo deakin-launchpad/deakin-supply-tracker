@@ -9,6 +9,7 @@ import Consumer from 'views/consumer/consumer.jsx'
 import  ItemHistory from 'views/itemhistory/itemhistory.jsx';
 import World from 'views/world/world.jsx';
 import AppHelper from "helpers/AppHelper.js";
+import { stat } from 'fs';
 
 const actors = {
   farmer: Farmer,
@@ -59,7 +60,8 @@ const mapStateToProps = (state) => {
   return {
       loggedIn : state.loginStatus.loggedIn,
       loading : state.loginStatus.loading,
-      userRole : state.loginStatus.userRole
+      userRole : state.loginStatus.userRole,
+      userGoods : state.loginStatus.userGoods
   }
 }
 

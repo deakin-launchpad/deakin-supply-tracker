@@ -39,7 +39,7 @@ class Exporter extends Component {
             </div>
             <div className="col s3">
               <div className="valueBox">
-                {this.props.parentProps.parentState.worldState.exporter}
+                {this.props.parentProps.userGoods}
               </div>
             </div>
           </div>

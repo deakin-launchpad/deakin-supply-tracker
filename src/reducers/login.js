@@ -1,4 +1,4 @@
-import { REQUEST_LOGIN, REQUEST_LOGOUT, REQUEST_ACCESS_TOKEN_LOGIN, SET_USER_ROLE } from "actions";
+import { REQUEST_LOGIN, REQUEST_LOGOUT, REQUEST_ACCESS_TOKEN_LOGIN, SET_USER_ROLE, SET_USER_GOODS } from "actions";
 const REQUEST_LOGIN_SUCCESS = "REQUEST_LOGIN_SUCCESS"
 const REQUEST_LOGIN_FAIL = "REQUEST_LOGIN_FAIL"
 
@@ -8,7 +8,7 @@ const REQUEST_LOGOUT_FAIL = "REQUEST_LOGOUT_FAIL"
 const REQUEST_ACCESS_TOKEN_LOGIN_SUCCESS = "REQUEST_ACCESS_TOKEN_LOGIN_SUCCESS"
 const REQUEST_ACCESS_TOKEN_LOGIN_FAIL = "REQUEST_ACCESS_TOKEN_LOGIN_FAIL"
 
-const login = (state = {loading: false, loggedIn: false, userRole: ''}, action) => {
+const login = (state = {loading: false, loggedIn: false, userRole: '',userGoods:''}, action) => {
   switch(action.type) {
     // Login and accessTokenLogin
     case REQUEST_LOGIN:
@@ -26,6 +26,10 @@ const login = (state = {loading: false, loggedIn: false, userRole: ''}, action) 
     // Set user role
     case SET_USER_ROLE:
       return {...state, userRole: action.userRole}
+
+    //Set user goods
+    case SET_USER_GOODS:
+      return {...state, userGoods: action.userGoods}
 
     // Logout
     case REQUEST_LOGOUT:
