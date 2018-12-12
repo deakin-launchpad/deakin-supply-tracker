@@ -21,6 +21,22 @@ class ItemHistory extends Component {
 
       }
 
+      transactionType = (value) => {
+          let result;
+          switch(value){
+                case "CREATE_ITEMS":
+                    result = "Created Items";
+                    break;
+                case "BUY_ITEMS":
+                    result = "Bought Items";
+                    break;
+                default:
+                    result = "";
+                    break
+          }
+          return result;
+      }
+
        itemData (){
         
        }
@@ -40,7 +56,6 @@ class ItemHistory extends Component {
 
 
   render() {
-      {console.log(">>>",this.state.temp)}
       if (this.state.temp.length === 0) return (<LoadingComponent/>);
     return (
         <div className="itemHistory">
@@ -56,10 +71,10 @@ class ItemHistory extends Component {
                                 <div className="cd-timeline__content js-cd-content">
                                     <h3>{value.itemId.itemName}</h3>
                                     <ul>
-                                        <li>Transaction Type: {value.transactionType}</li>
+                                        <li>Transaction Type: {this.transactionType(value.transactionType)}</li>
                                         <li>Price: {value.itemId.price}</li>
-                                        <li>Owner Name: {value.ownerId.firstName+" "+value.ownerId.lastName}</li>
-                                        <li>Supplier Name: {value.supplierId.firstName+" "+value.supplierId.lastName}</li>
+                                        <li>Reciever: {value.ownerId.firstName+" "+value.ownerId.lastName+" ("+value.ownerId.role+")"}</li>
+                                        <li>Sender: {value.supplierId.firstName+" "+value.supplierId.lastName+" ("+value.supplierId.role+")"}</li>
                                         <li>Item Exchanged: {value.itemExchanged}</li>
                                     </ul>
                                     <span className="cd-timeline__date">{(value.currentTime).substring(0, 10)}</span>

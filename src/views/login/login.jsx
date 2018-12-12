@@ -11,24 +11,25 @@ class Login extends Component {
       password: '',
       isLoggedIn: false,
       error: false,
+      errorMsg: ""
     };
   }
 
   errorMessage = () => {
-    if(this.state.error) {
+    if (this.state.error) {
       return (
-        <p><b>Invalid credentials!</b></p>
+        <p><b>{this.state.errorMsg}</b></p>
       )
     }
   }
 
-  handleEmailChange=(e)=> {
+  handleEmailChange = (e) => {
     this.setState({
       emailId: e.target.value
     });
   }
 
-  handlePasswordChange=(e)=> {
+  handlePasswordChange = (e) => {
     this.setState({
       password: e.target.value
     });
@@ -38,20 +39,36 @@ class Login extends Component {
     let email = this.state.emailId
     let password = this.state.password
     if ((email.length > 0) && (password.length > 0)) {
-      this.performLogin()
-    } else {
+      return true;
+    }
+    else {
       this.setState({
-        error: true
+        error: true,
+        errorMsg: "Email or password must not be empty!"
       })
+      return false
     }
   }
 
-  performLogin = () => {
+
+  performLogin = (e) => {
+    e.preventDefault();
+    if(!this.validationCheck()) return;
     this.props.dispatchLogin(this.state).then((response) => {
+      if (response.error !== undefined && response.error.response.data.statusCode !== 200) {
+        console.log(response.error.response.data.message);
+        this.setState({
+          error: true,
+          errorMsg: response.error.response.data.message
+        })
+        return
+      }
       const userRole = response.payload.data.data.userDetails.role.toLowerCase();
       const accessToken = response.payload.data.data.accessToken;
       AppHelper.loginUser(true, userRole, accessToken);
       this.props.dispatchSetUserRole(userRole);
+    }).catch((error) => {
+      console.log(error)
     });
     // API.loginUser(this.state,this.props.parentProps.parentStateHandler)
   }
@@ -68,7 +85,7 @@ class Login extends Component {
               <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
               <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
               {this.errorMessage()}
-              <a className="waves-effect waves-light btn" onClick={this.validationCheck} href="#!"> Login </a>
+              <a className="waves-effect waves-light btn" onClick={this.performLogin} href="#!"> Login </a>
             </div>
           </div>
         </div>
@@ -79,9 +96,10 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchLogin  : (data) => dispatch(requestLogin(data)),
-    dispatchSetUserRole : (userRole) => dispatch(setUserRole(userRole))
+    dispatchLogin: (data) => dispatch(requestLogin(data)),
+    dispatchSetUserRole: (userRole) => dispatch(setUserRole(userRole))
   }
 }
 
 export default connect(null, mapDispatchToProps)(Login);
+
