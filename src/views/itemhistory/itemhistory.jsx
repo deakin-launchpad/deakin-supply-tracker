@@ -75,7 +75,6 @@ class ItemHistory extends Component {
                                         <li>Price: $ {value.itemId.price}</li>
                                         <li>Reciever: {value.ownerId.firstName+" "+value.ownerId.lastName+" ("+value.ownerId.role+")"}</li>
                                         <li>Sender: {value.supplierId.firstName+" "+value.supplierId.lastName+" ("+value.supplierId.role+")"}</li>
-                                        <li>Item Exchanged: {value.itemExchanged}</li>
                                     </ul>
                                     <span className="cd-timeline__date">{(value.currentTime).substring(0, 10)}</span>
                                 </div>
