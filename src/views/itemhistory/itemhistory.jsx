@@ -59,7 +59,7 @@ class ItemHistory extends Component {
       if (this.state.temp.length === 0) return (<LoadingComponent/>);
     return (
         <div className="itemHistory">
-        <h4>{this.state.temp[0].itemId.itemName}</h4>
+        <h4>Goat Cheese Jar 550g</h4>
             <section className="cd-timeline js-cd-timeline">
 		        <div className="cd-timeline__container">
                     {
@@ -72,7 +72,7 @@ class ItemHistory extends Component {
                                 <div className="cd-timeline__content js-cd-content">
                                     <ul>
                                         <li>Transaction Type: {this.transactionType(value.transactionType)}</li>
-                                        <li>Price: {value.itemId.price}</li>
+                                        <li>Price: $ {value.itemId.price}</li>
                                         <li>Reciever: {value.ownerId.firstName+" "+value.ownerId.lastName+" ("+value.ownerId.role+")"}</li>
                                         <li>Sender: {value.supplierId.firstName+" "+value.supplierId.lastName+" ("+value.supplierId.role+")"}</li>
                                         <li>Item Exchanged: {value.itemExchanged}</li>
