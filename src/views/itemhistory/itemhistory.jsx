@@ -60,6 +60,7 @@ class ItemHistory extends Component {
     return (
         <div className="itemHistory">
         <h4>Goat Cheese Jar 550g</h4>
+        <img className="itemImage" src="https://cdn0.woolworths.media/content/wowproductimages/large/663973.jpg" alt="itemImage" />
             <section className="cd-timeline js-cd-timeline">
 		        <div className="cd-timeline__container">
                     {

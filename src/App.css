@@ -54,6 +54,10 @@ Vertical Timeline - by CodyHouse.co
 
 -------------------------------- */
 
+.itemHistory .itemImage{
+  width: 200px;
+}
+
 .cd-timeline {
   overflow: hidden;
   margin: 2em auto;
