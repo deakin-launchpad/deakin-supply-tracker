@@ -68,6 +68,31 @@ class API {
     .catch((error) => console.log(error));
   }
 
+  getMarketRequest(stateHandler) {
+    axiosClient.get("crops/getMarketRequest",{
+      headers:{ Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
+    .then((response) => {
+      stateHandler({
+        temp: response.data.data.cropRequest
+      })
+    })
+    .catch((error) => console.log(error));
+  }
+
+  getRequestDetail(data,stateHandler) {
+    axiosClient.get("crops/getItemRequest/"+data.requestId,{
+      headers:{ Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
+    .then((response) => {
+      stateHandler({
+        requestData:response.data.data.requestData,
+        temp: response.data.data.requestBids
+      })
+    })
+    .catch((error) => console.log(error));
+  }
+
   // GET requests
 }
 

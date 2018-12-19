@@ -15,7 +15,7 @@ class Header extends Component {
         <div className="navbar-fixed">
           <nav>
             <div className="nav-wrapper">
-              <a href="#!" className="brand-logo center">{this.props.title}</a>
+              <a href="/" className="brand-logo center">{this.props.title}</a>
               <ul className="right">
               <li><a onClick={this.logout} className="waves-effect waves-light right" href="#!"><i className="material-icons right">exit_to_app</i><span className="hide-on-small-only">Logout</span></a></li>
               </ul>

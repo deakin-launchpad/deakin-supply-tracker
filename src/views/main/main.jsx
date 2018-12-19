@@ -9,7 +9,8 @@ import Consumer from 'views/consumer/consumer.jsx'
 import  ItemHistory from 'views/itemhistory/itemhistory.jsx';
 import World from 'views/world/world.jsx';
 import AppHelper from "helpers/AppHelper.js";
-import { stat } from 'fs';
+import Market from 'views/market/market.jsx';
+import RequestDetail from 'views/requestdetail/requestdetail.jsx'
 
 const actors = {
   farmer: Farmer,
@@ -44,6 +45,8 @@ class Main extends Component {
             <Route exact path='/consumer' render={ (props) => this.renderConditionalActor('consumer', props)}/>
             
             <Route exact path='/world' render={ (props) => <World {...props} parentProps={this.props}/> }/>
+            <Route exact path='/market' render={ (props) => <Market {...props} parentProps={this.props}/> }/>
+            <Route exact path='/requestdetail/:requestId' render={ (props) => <RequestDetail {...props} parentProps={this.props}/> }/>
             <Route exact path='/itemhistory/:itemId' render={(props) => <ItemHistory {...props} parentProps={this.props}/>}/>
         </Switch>
         </div>

@@ -59,7 +59,7 @@ class ItemHistory extends Component {
       if (this.state.temp.length === 0) return (<LoadingComponent/>);
     return (
         <div className="itemHistory">
-        <h4>Goat Cheese Jar 550g</h4>
+        <h4>{this.state.temp[0].itemId.itemName}</h4>
         <img className="itemImage" src="https://cdn0.woolworths.media/content/wowproductimages/large/663973.jpg" alt="itemImage" />
             <section className="cd-timeline js-cd-timeline">
 		        <div className="cd-timeline__container">
