@@ -74,7 +74,8 @@ class API {
     })
     .then((response) => {
       stateHandler({
-        temp: response.data.data.cropRequest
+        temp: response.data.data.cropRequest,
+        statusCode: response.status
       })
     })
     .catch((error) => console.log(error));
