@@ -81,16 +81,16 @@ class Login extends Component {
         <h1>
           {this.props.parentState.title}
         </h1>
-        <div className='row'>
           <div className='row'>
-            <div className='col s6 offset-s3'>
-              <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
-              <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
-              {this.errorMessage()}
-              <a className="waves-effect waves-light btn" onClick={this.performLogin} href="#!"> Login </a>
-            </div>
+            <form>
+              <div className='col s6 offset-s3'>
+                <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
+                <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
+                {this.errorMessage()}
+                <button className="waves-effect waves-light btn" id="loginButton" onClick={this.performLogin}>Login</button>
+              </div>
+            </form>
           </div>
-        </div>
       </div>
     );
   }
