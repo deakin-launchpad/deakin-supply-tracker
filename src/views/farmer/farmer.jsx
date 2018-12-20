@@ -1,62 +1,14 @@
 import React, { Component } from 'react';
-import API from 'helpers/api.js';
-import Modal from 'components/modal.jsx';
+import IncreaseSuppliesModal from 'components/modal/increaseSuppliesModal.jsx';
 import bodyLogo from "images/farmer.png";
 
 class Farmer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      amount: 0,
-      price: 0
-    }
-  }
-
-  handleChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    })
-  }
-
   renderModal = () => {
     return (
-      <Modal title="Create items" id='modal1'>
-        <div className="row">
-          <form className="col s12">
-            <div className="row">
-                <div className="input-field col s12">
-                  <i className="material-icons prefix">account_circle</i>
-                  <input placeholder="Name" id="name" type="text" className="validate" onChange={this.handleChange} value={this.state.name}/>
-                  <label className="active" htmlFor="name">Name</label>
-                </div>
-              </div>
-            <div className="row">
-              <div className="input-field col s6">
-                <i className="material-icons prefix">attach_money</i>
-                <input placeholder="Price" id="price" type="number" className="validate" onChange={this.handleChange} value={this.state.price}/>
-                <label className="active" htmlFor="price">Price</label>
-              </div>
-              <div className="input-field col s6">
-                <i className="material-icons prefix">shop</i>
-                <input id="amount" type="number" className="validate" onChange={this.handleChange} value={this.state.amount}/>
-                <label className="active" htmlFor="amount">Amount</label>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div className="modal-footer">
-          <a href="#!" className="modal-close waves-effect waves-light btn-flat">Cancel</a>
-          <a href="#!" className="modal-close waves-effect waves-light btn-flat" 
-            onClick={this.increaseSupplies}>Submit</a>
-        </div>
-      </Modal>
+      <IncreaseSuppliesModal title="Create items" id='modal1'/>
     );
   }
 
-  increaseSupplies = () => {
-    API.createItems(this.state)
-  }
   render() {
     return (
       <div className="Farmer bodyDiv">
@@ -98,6 +50,9 @@ class Farmer extends Component {
             </div>
             <div className="col s6 left-align">
               <a href="/market" className="waves-effect submitBtn waves-light btn">Go To Market</a>
+            </div>
+            <div className="col s12 center-align">
+              <a href="/myBids" className="waves-effect submitBtn waves-light btn">My Bids</a>
             </div>
           </div>
         </div>
