@@ -11,6 +11,7 @@ import World from 'views/world/world.jsx';
 import AppHelper from "helpers/AppHelper.js";
 import Market from 'views/market/market.jsx';
 import RequestDetail from 'views/requestdetail/requestdetail.jsx'
+import MyBids from 'views/bid/myBids.jsx'
 
 const actors = {
   farmer: Farmer,
@@ -48,6 +49,8 @@ class Main extends Component {
             <Route exact path='/market' render={ (props) => <Market {...props} parentProps={this.props}/> }/>
             <Route exact path='/requestdetail/:requestId' render={ (props) => <RequestDetail {...props} parentProps={this.props}/> }/>
             <Route exact path='/itemhistory/:itemId' render={(props) => <ItemHistory {...props} parentProps={this.props}/>}/>
+
+            <Route exact path='/myBids' render={() => <MyBids/>} />
         </Switch>
         </div>
       </main>
