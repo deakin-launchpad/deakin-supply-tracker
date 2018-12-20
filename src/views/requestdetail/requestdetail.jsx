@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from 'helpers/api.js';
-import Modal from 'components/modal.jsx';
+import CreateBidModal from 'components/modal/createBidModal.jsx';
 import LoadingComponent from 'components/loading/loading.jsx';
 
 class RequestDetail extends Component {
@@ -40,27 +40,33 @@ class RequestDetail extends Component {
 
     renderModal = () => {
         return (
-            <Modal title="Create Bid" id='modal1'>
-                <div className="row">
-                    <form className="col s12">
-                        <div className="row">
-                            <h3>Demo Bid Modal</h3>
-                        </div>
-                    </form>
-                </div>
-                <div className="modal-footer">
-                    <a href="#!" className="modal-close waves-effect waves-light btn-flat">Cancel</a>
-                    <a href="#!" className="modal-close waves-effect waves-light btn-flat">Submit</a>
-                </div>
-            </Modal>
+            <CreateBidModal title="Create Bid" id='modal1' requestId={this.state.requestId} />
         );
     }
 
+	// STATUS: true -> show Accept button
+	// STATUS: false -> show bid button
+	displayAcceptButton = (status) => {
+		if(status) {
+			return (
+				<a href="#!" className="waves-effect waves-light btn">Accept</a>
+			)
+		} else {
+			return ("-")
+		}
+	}
 
+	displayBidButton = (status) => {
+		if(!status) {
+			return (
+				<button className="waves-effect submitBtn waves-light btn modal-trigger" data-target="modal1">Create a Bid</button>
+			)
+		}
+	}
 
     render() {
-        { console.log(">>>>>", this.state) }
         if (this.state.requestData === "") return (<LoadingComponent />);
+        console.log("State", this.state)
         return (
             <div className="market">
                 <h2>Request Detail</h2>
@@ -95,16 +101,14 @@ class RequestDetail extends Component {
                                     <td>{value.amountOfItems}</td>
                                     <td>{value.priceOffered}</td>
                                     <td>{(value.dateOfDelivery).substring(0, 10)}</td>
-                                    <td>{this.capitalizeString(f.bidStatus)}</td>
-                                    <td><a href="#" className="waves-effect waves-light btn">Accept</a></td>
+                                    <td>{this.capitalizeString(value.bidStatus)}</td>
+                                    <td>{this.displayAcceptButton(this.state.flag)}</td>
                                 </tr>
                             ))
                         }
                     </tbody>
                 </table>
-                <div className="row default-margin center-align">
-                    <button className="waves-effect submitBtn waves-light btn modal-trigger" data-target="modal1">Create a Bid</button>
-                </div>
+                {this.displayBidButton(this.state.flag)}
                 {this.renderModal()}
             </div>
         );
