@@ -88,10 +88,23 @@ class API {
     .then((response) => {
       stateHandler({
         requestData:response.data.data.requestData,
+        flag:response.data.data.flag,
         temp: response.data.data.requestBids
       })
     })
     .catch((error) => console.log(error));
+  }
+
+  getMyBid(stateHandler) {
+    axiosClient.get("crops/getMyBid", {
+      headers:{ Authorization: " Bearer " + AppHelper.getUserAccessToken() }
+    })
+    .then((response) => {
+      stateHandler({
+        temp: response.data.data.requestData,
+        statusCode: response.status,
+      })
+    })
   }
 
   // GET requests
