@@ -44,7 +44,12 @@ class Exporter extends Component {
             </div>
           </div>
           <div className="row center-align">
-            <button className="waves-effect submitBtn waves-light btn" onClick={this.buyItems}>Buy From Farmer</button>
+            <div className="col s6">
+              <button className="waves-effect submitBtn waves-light btn" onClick={this.buyItems}>Buy From Farmer</button>
+            </div>
+            <div className="col s6 left-align">
+              <a href="/market" className="waves-effect submitBtn waves-light btn">Go To Market</a>
+            </div>
           </div>
         </div>
       </div>
