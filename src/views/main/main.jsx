@@ -12,6 +12,7 @@ import AppHelper from "helpers/AppHelper.js";
 import Market from 'views/market/market.jsx';
 import RequestDetail from 'views/requestdetail/requestdetail.jsx'
 import MyBids from 'views/bid/myBids.jsx'
+import MyRequests from 'views/myRequest/myRequests.jsx'
 
 const actors = {
   farmer: Farmer,
@@ -51,6 +52,7 @@ class Main extends Component {
             <Route exact path='/itemhistory/:itemId' render={(props) => <ItemHistory {...props} parentProps={this.props}/>}/>
 
             <Route exact path='/myBids' render={() => <MyBids/>} />
+            <Route exact path='/myRequests' render={() => <MyRequests/>} />
         </Switch>
         </div>
       </main>
