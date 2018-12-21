@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from 'helpers/api.js';
 import M from "materialize-css";
 import 'react-day-picker/lib/style.css';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
@@ -35,6 +36,10 @@ class Modal extends Component {
     })
   }
   
+  createBid = () => {
+    API.createBid(this.state)
+  }
+
   render() {
     return (
       <div ref={Modal => { this.Modal = Modal; }} id ="modal1" className="modal">
@@ -50,7 +55,7 @@ class Modal extends Component {
                 <p>Please select bid type:</p>
                 <p>
                   <label>
-                    <input name="bidView" id="public" type="radio" onChange={(e) => this.setState({ bidView: e.target.id})} />
+                    <input name="bidView" id="public" type="radio" onChange={(e) => this.setState({ bidView: (e.target.id).toUpperCase()})} />
                     <span>Public</span>
                   </label>
                 </p>
@@ -72,8 +77,8 @@ class Modal extends Component {
             </form>
         </div>
         <div className="modal-footer">
-            <a href="#!" className="modal-close waves-effect waves-light btn-flat left">Cancel</a>
-            <a href="#!" className="modal-close waves-effect waves-light btn-flat right">Submit</a>
+          <button className="modal-close waves-effect waves-light btn-flat left">Cancel</button>
+          <button className="modal-close waves-effect waves-light btn-flat right" onClick={this.createBid}>Submit</button>
         </div>
       </div>
     );
