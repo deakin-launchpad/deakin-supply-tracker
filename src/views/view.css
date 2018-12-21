@@ -10,7 +10,7 @@
   font-size: 1.8rem !important;
 }
 
-.bodyImg {
+.image {
   z-index: 26;
   height: 100px;
   width: 100px;
@@ -45,7 +45,7 @@
   width: 60px;
 }
 
-.heading {
+.title {
   margin-top: 15px;
   margin-bottom: 0;
   font-size: 150%
