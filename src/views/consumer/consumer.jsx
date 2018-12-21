@@ -10,10 +10,10 @@ class Consumer extends Component {
   render() {
     return (
       <div className="Consumer bodyDiv">
-        <p className="heading">
+        <p className="title">
           Consumer
         </p>
-        <img className="bodyImg" src={bodyLogo} alt="Farmer"/>
+        <img className="image" src={bodyLogo} alt="Farmer"/>
         <div className="containerDiv">
           <div className="row">
             <div className="col s12 boldFont">
@@ -48,6 +48,10 @@ class Consumer extends Component {
             <button className="waves-effect submitBtn waves-light btn margin-top">Consume Supplies</button>
             <br/>
             <a href="/market" className="waves-effect submitBtn waves-light margin-top btn">Go To Market</a>
+            <br/>
+            <a href="/myBids" className="waves-effect submitBtn waves-light btn">My Bids</a>
+            <br/>
+            <a href="/myRequests" className="waves-effect submitBtn waves-light btn">My Requests</a>
           </div>
         </div>
       </div>
