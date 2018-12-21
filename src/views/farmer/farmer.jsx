@@ -12,10 +12,10 @@ class Farmer extends Component {
   render() {
     return (
       <div className="Farmer bodyDiv">
-        <p className="heading">
+        <p className="title">
           Farmer
         </p>
-        <img className="bodyImg" src={bodyLogo} alt="Farmer"/>
+        <img className="image" src={bodyLogo} alt="Farmer"/>
         <div className="containerDiv">
           <div className="row">
             <div className="col s12 boldFont">
@@ -51,8 +51,11 @@ class Farmer extends Component {
             <div className="col s6 left-align">
               <a href="/market" className="waves-effect submitBtn waves-light btn">Go To Market</a>
             </div>
-            <div className="col s12 center-align">
+            <div className="col s6 center-align">
               <a href="/myBids" className="waves-effect submitBtn waves-light btn">My Bids</a>
+            </div>
+            <div className="col s6 left-align">
+              <a href="/myRequests" className="waves-effect submitBtn waves-light btn">My Requests</a>
             </div>
           </div>
         </div>
