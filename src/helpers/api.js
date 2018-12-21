@@ -15,8 +15,26 @@ class API {
     .catch((error) => console.log(error.status));
   }
 
+  createBid = (data) => {
+    console.log(data)
+    axiosClient.post("crops/createBid", {
+      requestId: (data.requestId).toString(),
+      amountOfItems: Number(data.amountOfItems),
+      priceOffered: Number(data.priceOffered),
+      dateOfDelivery: data.dateOfDelivery,
+      bidView: data.bidView,
+    }, 
+    {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => console.log(error.status));
+  }
+
   createItemRequest = (name, amount) => {
-    axiosClient.post("crops/apicropscreateItemRequest", {
+    axiosClient.post("crops/createItemRequest", {
       itemName: name,
       itemAmount: amount
     }, 
@@ -107,6 +125,18 @@ class API {
     })
   }
 
+  getMyRequest(stateHandler) {
+    axiosClient.get("crops/getMyRequest", {
+      headers:{ Authorization: " Bearer " + AppHelper.getUserAccessToken() }
+    })
+    .then((response) => {
+      console.log(response)
+      stateHandler({
+        temp: response.data.data.requestData,
+        statusCode: response.status,
+      })
+    })
+  }
   // GET requests
 }
 
