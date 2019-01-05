@@ -7,7 +7,7 @@ class Footer extends Component {
         <div className = "footer-copyright">
             <div className = "container">
               <p className="left">Supplies {this.props.worldSupplies}</p>
-              <a href="/world" className="waves-effect waves-light btn center">World State</a> 
+              <a href="/world" className="waves-effect waves-light btn center" id="world-state-button">World State</a> 
             </div>
         </div>
       </footer>

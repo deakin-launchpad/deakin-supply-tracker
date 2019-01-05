@@ -10,21 +10,21 @@ class Importer extends Component {
   render() {
     console.log('Importer ', this.props)
     return (
-      <div className="Importer bodyDiv">
-        <p className="title">
+      <div className="Importer">
+        <p className="main-title">
           Importer
         </p>
-        <img className="image" src={bodyLogo} alt="Farmer"/>
-        <div className="containerDiv">
+        <img className="image" src={bodyLogo} alt="importer-img"/>
+        <div className="view-container">
           <div className="row">
-            <div className="col s12 boldFont">
-              Supplies
+            <div className="col s12">
+              <b> Supplies </b>
             </div>
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text"> At Exporter </span> <br/>
-              <span className="subText"> Supplies currently at the exporter </span>
+              <span className="container-heading"> At Exporter </span> <br/>
+              <span className="container-sub-heading"> Supplies currently at the exporter </span>
             </div>
             <div className="col s3 ">
               <div className="valueBox"> 
@@ -34,8 +34,8 @@ class Importer extends Component {
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text"> Warehouse </span> <br />
-              <span className="subText"> Supplies currently in Warehouse </span>
+              <span className="container-heading"> Warehouse </span> <br />
+              <span className="container-sub-heading"> Supplies currently in Warehouse </span>
             </div>
             <div className="col s3">
               <div className="valueBox">
@@ -45,16 +45,16 @@ class Importer extends Component {
           </div>
           <div className="row center-align">
             <div className="col s6">
-              <button className="waves-effect submitBtn waves-light btn" onClick={this.buyItems}>Buy From Exporter</button>
+              <button className="waves-effect submitBtn waves-light btn" id="buy-from-importer-button" onClick={this.buyItems}>Buy From Exporter</button>
             </div>
             <div className="col s6 left-align">
-              <a href="/market" className="waves-effect submitBtn waves-light btn">Go To Market</a>
+              <a href="/market" className="waves-effect submitBtn waves-light btn" id="market-button">Go To Market</a>
             </div>
             <div className="col s6 center-align">
-              <a href="/myBids" className="waves-effect submitBtn waves-light btn">My Bids</a>
+              <a href="/myBids" className="waves-effect submitBtn waves-light btn" id="bid-button">My Bids</a>
             </div>
             <div className="col s6 left-align">
-              <a href="/myRequests" className="waves-effect submitBtn waves-light btn">My Requests</a>
+              <a href="/myRequests" className="waves-effect submitBtn waves-light btn" id="request-button">My Requests</a>
             </div>
           </div>
         </div>

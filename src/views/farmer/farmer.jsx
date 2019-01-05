@@ -11,21 +11,21 @@ class Farmer extends Component {
 
   render() {
     return (
-      <div className="Farmer bodyDiv">
-        <p className="title">
+      <div className="Farmer">
+        <p className="main-title">
           Farmer
         </p>
-        <img className="image" src={bodyLogo} alt="Farmer"/>
-        <div className="containerDiv">
+        <img className="image" src={bodyLogo} alt="farmer-img"/>
+        <div className="view-container">
           <div className="row">
-            <div className="col s12 boldFont">
+            <div className="col s12">
               Supplies
             </div>
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text"> At Consumer </span> <br/>
-              <span className="subText"> Supplies currently at the consumer </span>
+              <span className="container-heading"> At Consumer </span> <br/>
+              <span className="container-sub-heading"> Supplies currently at the consumer </span>
             </div>
             <div className="col s3 ">
               <div className="valueBox"> 
@@ -35,8 +35,8 @@ class Farmer extends Component {
           </div>
           <div className="row">
             <div className="col s9">
-              <span className="text"> Warehouse </span> <br />
-              <span className="subText"> Supplies currently in your personal inventory </span>
+              <span className="container-heading"> Warehouse </span> <br />
+              <span className="container-sub-heading"> Supplies currently in your personal inventory </span>
             </div>
             <div className="col s3">
               <div className="valueBox">
@@ -46,16 +46,16 @@ class Farmer extends Component {
           </div>
           <div className="row center-align">
             <div className="col s6">
-              <button className="waves-effect submitBtn waves-light btn modal-trigger" data-target="modal1">Increase Supplies</button>
+              <button className="waves-effect submitBtn waves-light btn modal-trigger" id="increase-supplies-button" data-target="modal1">Increase Supplies</button>
             </div>
             <div className="col s6 left-align">
-              <a href="/market" className="waves-effect submitBtn waves-light btn">Go To Market</a>
+              <a href="/market" className="waves-effect submitBtn waves-light btn" id="market-button">Go To Market</a>
             </div>
             <div className="col s6 center-align">
-              <a href="/myBids" className="waves-effect submitBtn waves-light btn">My Bids</a>
+              <a href="/myBids" className="waves-effect submitBtn waves-light btn" id="bid-button">My Bids</a>
             </div>
             <div className="col s6 left-align">
-              <a href="/myRequests" className="waves-effect submitBtn waves-light btn">My Requests</a>
+              <a href="/myRequests" className="waves-effect submitBtn waves-light btn" id="request-button">My Requests</a>
             </div>
           </div>
         </div>

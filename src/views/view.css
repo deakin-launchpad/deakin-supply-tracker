@@ -1,38 +1,43 @@
 
-.bodyDiv {
+/* Table of Contents
+
+  1. Views
+  2. Views Image
+  3. Value Box
+  4. Text
+  5. Buttons
+
+*/
+
+
+/* 1. Views */
+.Farmer, .Consumer, .Exporter, .World, .Importer {
   font-size: 24px;
   font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
-  font-weight: 300;
+  /* font-weight: 300; */
 }
 
-.brand-logo {
-  font-size: 1.8rem !important;
-}
-
-.image {
-  z-index: 26;
-  height: 100px;
-  width: 100px;
-}
-
-.containerDiv {
+.view-container {
   text-align: left;
   line-height: 0.8;
 }
 
-.text {
-  font-size: 18px;
+/* END */
+
+
+/* 2. Views Image */
+.image {
+  z-index: 26;
+  height: 100px;
+  width: 100px;
+  margin: 5px;
 }
 
-.subText {
-  font-size: 13px;
-}
+/* END */
 
-.boldFont {
-  font-weight: bold;
-}
 
+/* 3. Value Box */
 .valueBox {
   line-height: 1.9;
   text-align: center;
@@ -45,7 +50,19 @@
   width: 60px;
 }
 
-.title {
+/* END */
+
+
+/* 4. Text */
+.container-heading {
+  font-size: 18px;
+}
+
+.container-sub-heading {
+  font-size: 13px;
+}
+
+.main-title {
   margin-top: 15px;
   margin-bottom: 0;
   font-size: 150%
@@ -57,17 +74,15 @@
   font-size: 120%;
 }
 
-.customStyle {
-  padding-top: 20px;
+/* END */
+
+
+/* 5. Buttons */
+
+#buy-from-importer-button, #increase-supplies-button, #buy-from-exporter-button, #buy-from-consumer-button, #consume-supplies-button, #market-button, #bid-button, #request-button {
+  margin: 5px
 }
 
-.pad-top{ 
-  padding-top: 8px !important;
-}
-
-.margin-top {
-  margin-top: 4px;
-}
 @media only screen and (max-width: 600px) {
   .submitBtn {
     width: 100%;
@@ -82,4 +97,19 @@
     display:inline-block;
     text-align: center
   }
+}
+
+/* END */
+
+
+.customStyle {
+  padding-top: 20px;
+}
+
+.pad-top{ 
+  padding-top: 8px !important;
+}
+
+.margin-top {
+  margin-top: 4px;
 }

@@ -15,14 +15,14 @@ class World extends Component {
 
   render() {
     return (
-      <div className="World bodyDiv">
+      <div className="World">
         <p className="heading">
           World view
         </p>
         <p className="subHeading">
           Supplies
         </p>
-        <div className="containerDiv">
+        <div className="view-container">
           <div className="row">
             <div className="col s9 pad-top">
               Farmer
