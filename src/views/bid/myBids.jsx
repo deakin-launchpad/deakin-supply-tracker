@@ -45,7 +45,7 @@ class MyBids extends Component {
     )
     return (
       <div className="my-bids-page">
-        <p className="center-align">My Bids</p>
+        <h2 className="center-align">My Bids</h2>
         <table className="highlight responsive-table">
           <thead>
             <tr>

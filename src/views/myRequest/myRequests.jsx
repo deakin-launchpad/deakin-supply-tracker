@@ -28,7 +28,7 @@ class MyRequests extends Component {
     if (this.state.statusCode === '') return (<LoadingComponent />);
     else if(this.state.statusCode === 200 && this.state.temp.length === 0) return (
       <div>
-        <h2>My Bids</h2>
+        <h2>My Requests</h2>
         <table className="highlight responsive-table">
           <thead>
             <tr>
@@ -46,7 +46,7 @@ class MyRequests extends Component {
     )
     return (
       <div className="my-bids-page">
-        <p className="center-align">My Bids</p>
+        <h2 className="center-align">My Requests</h2>
         <table className="highlight responsive-table">
           <thead>
             <tr>
