@@ -2,23 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Login from 'views/login/login.jsx';
 import { Switch, Route, Redirect} from 'react-router-dom';
-import Farmer from 'views/farmer/farmer.jsx'
-import Importer from 'views/importer/importer.jsx'
-import Exporter from 'views/exporter/exporter.jsx'
-import Consumer from 'views/consumer/consumer.jsx'
+import Farmer from 'views/farmer/farmer.jsx';
+import Importer from 'views/importer/importer.jsx';
+import Exporter from 'views/exporter/exporter.jsx';
+import Consumer from 'views/consumer/consumer.jsx';
 import  ItemHistory from 'views/itemhistory/itemhistory.jsx';
 import World from 'views/world/world.jsx';
 import AppHelper from "helpers/AppHelper.js";
 import Market from 'views/market/market.jsx';
-import RequestDetail from 'views/requestdetail/requestdetail.jsx'
-import MyBids from 'views/bid/myBids.jsx'
-import MyRequests from 'views/myRequest/myRequests.jsx'
+import RequestDetail from 'views/requestdetail/requestdetail.jsx';
+import MyBids from 'views/bid/myBids.jsx';
+import MyRequests from 'views/myRequest/myRequests.jsx';
+import Profile from 'views/profile/profile.jsx';
+import OngoingRequest from 'views/ongoingRequests/ongoingRequests.jsx';
+import Transporter from 'views/transporter/transporter.jsx';
 
 const actors = {
   farmer: Farmer,
   exporter: Exporter,
   importer: Importer,
-  consumer: Consumer
+  consumer: Consumer,
+  transporter: Transporter
 }
 class Main extends Component {
   
@@ -45,6 +49,7 @@ class Main extends Component {
             <Route exact path='/exporter' render={ (props) => this.renderConditionalActor('exporter', props)}/>
             <Route exact path='/importer' render={ (props) => this.renderConditionalActor('importer', props)}/>
             <Route exact path='/consumer' render={ (props) => this.renderConditionalActor('consumer', props)}/>
+            <Route exact path='/transporter' render={ (props) => this.renderConditionalActor('transporter', props)}/>
             
             <Route exact path='/world' render={ (props) => <World {...props} parentProps={this.props}/> }/>
             <Route exact path='/market' render={ (props) => <Market {...props} parentProps={this.props}/> }/>
@@ -53,6 +58,8 @@ class Main extends Component {
 
             <Route exact path='/myBids' render={() => <MyBids/>} />
             <Route exact path='/myRequests' render={() => <MyRequests/>} />
+            <Route exact path='/ongoingRequests' render={() => <OngoingRequest/>} />
+            <Route exact path='/profile' render={() => <Profile/>} />
         </Switch>
         </div>
       </main>

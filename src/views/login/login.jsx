@@ -67,6 +67,7 @@ class Login extends Component {
       const accessToken = response.payload.data.data.accessToken;
       const userGoods = response.payload.data.data.userDetails.warehouse;
       AppHelper.loginUser(true, userRole, accessToken);
+      //App.authenticateSocket(accessToken);
       this.props.dispatchSetUserRole(userRole);
       this.props.dispatchSetUserGoods(userGoods);
     }).catch((error) => {

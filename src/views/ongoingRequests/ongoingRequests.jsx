@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import API from 'helpers/api.js';
 import LoadingComponent from 'components/loading/loading.jsx';
 
-class MyRequests extends Component {
+class OngoingRequest extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,21 +14,20 @@ class MyRequests extends Component {
     this.setState(temp)
   }
 
-  getMyRequest = () => {
-    API.getMyRequest(this.stateHandler);
+  getOngoingRequest = () => {
+    API.getOngoingRequest(this.stateHandler);
     console.log("state", this.state)
   }
 
   componentDidMount() {
-    this.getMyRequest()
+    this.getOngoingRequest()
   }
 
   render() {
-    console.log(">>>>>", this.state.temp)
     if (this.state.statusCode === '') return (<LoadingComponent />);
     else if (this.state.statusCode === 200 && this.state.temp.length === 0) return (
       <div>
-        <h2>My Requests</h2>
+        <h2>My Ongoing Requests</h2>
         <table className="highlight responsive-table">
           <thead>
             <tr>
@@ -44,7 +43,7 @@ class MyRequests extends Component {
     )
     return (
       <div className="my-bids-page">
-        <h2 className="center-align">My Requests</h2>
+        <h2 className="center-align">My Ongoing Requests</h2>
         <table className="highlight responsive-table">
           <thead>
             <tr>
@@ -73,4 +72,4 @@ class MyRequests extends Component {
   }
 }
 
-export default MyRequests;
+export default OngoingRequest;

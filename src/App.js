@@ -12,6 +12,8 @@ import LoadingComponent from 'components/loading/loading.jsx';
 import { connect } from 'react-redux';
 import { requestAccessTokenLogin, setUserRole, setUserGoods } from 'actions';
 import Login from 'views/login/login.jsx';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 const socket = openSocket(process.env.REACT_APP_BASE_URL);
 
 class App extends Component {
@@ -34,16 +36,39 @@ class App extends Component {
   initSocket() {
     socket.on('connect', () => {
       socket.emit('worldstate');
-      setInterval(function(){
+      setInterval(function () {
         socket.emit('worldstate');
       }, 60000);
     })
+
+
 
     socket.on('message', (data) => {
       // console.log(data.message.data);
       switch (data.message.type) {
         case "worldstate":
-          this.setState({worldState: data.message.data});
+          this.setState({ worldState: data.message.data });
+          break;
+        case "newItenRequest":
+          NotificationManager.info('New Item Request');
+          break;
+        case "newBidCreated":
+          NotificationManager.info('New Bid created for your request');
+          break;
+        case "bidCreatedSelf":
+          NotificationManager.success('Your bid was succesfull');
+          break;
+        case "itemCreated":
+          NotificationManager.success('Your items were successfully created');
+          break;
+        case "itemRequestSelf":
+          NotificationManager.success('Your items request was successfully created');
+          break;
+        case "bidAcceptedSucess":
+          NotificationManager.success('You successfully accepted this bid');
+          break;
+        case "bidAccepted":
+          NotificationManager.info('Your bid was accepted by the Orderer');
           break;
         default:
           break;
@@ -51,11 +76,15 @@ class App extends Component {
       // console.log("THIS BITCH WORKS: " + this.state.worldState.consumed);
       // console.log(this.state.worldState);
     })
-    
+
     socket.on('disconnect', () => {
       console.log('Client connected!')
     })
 
+  }
+
+  authenticateSocket(userToken) {
+    socket.emit('authenticate', userToken);
   }
 
   componentDidMount() {
@@ -64,23 +93,25 @@ class App extends Component {
     let token = ''
     if ((token = AppHelper.isUserLocalStorageLoggedIn())) {
       this.props.dispatchAccessTokenLogin(token)
-      .then((response) => {
-        const userRole = response.payload.data.data.userDetails.role.toLowerCase();
-        const userGoods = response.payload.data.data.userDetails.warehouse;
-        this.props.dispatchSetUserRole(userRole);
-        this.props.dispatchSetUserGoods(userGoods);
-      })
-      .catch ((error) => console.log(error));
+        .then((response) => {
+          const userRole = response.payload.data.data.userDetails.role.toLowerCase();
+          const userGoods = response.payload.data.data.userDetails.warehouse;
+          this.authenticateSocket(token);
+          this.props.dispatchSetUserRole(userRole);
+          this.props.dispatchSetUserGoods(userGoods);
+        })
+        .catch((error) => console.log(error));
     }
   }
 
   render() {
-    if (this.props.loading) return (<LoadingComponent/>);
+    if (this.props.loading) return (<LoadingComponent />);
     else return (
       <div className="App">
-        {this.props.loggedIn ? <Header title={this.state.title} logout={this.stateHandler}/> : ''}
-        {this.props.loggedIn ? <Main parentState={this.state} parentStateHandler={this.stateHandler}/> : <Login parentState={this.state} parentProps={this.props}/>}
-        {this.props.loggedIn ? <Footer worldSupplies={this.state.worldState.world}/> : ''}
+        {this.props.loggedIn ? <Header title={this.state.title} logout={this.stateHandler} parentProps={this.props} /> : ''}
+        {this.props.loggedIn ? <Main parentState={this.state} parentStateHandler={this.stateHandler} /> : <Login parentState={this.state} parentProps={this.props} />}
+        {this.props.loggedIn ? <Footer worldSupplies={this.state.worldState.world} /> : ''}
+        {this.props.loggedIn ? <NotificationContainer /> : ''}
       </div>
     );
   }
@@ -88,19 +119,19 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      loggedIn : state.loginStatus.loggedIn,
-      loading : state.loginStatus.loading,
-      loginStatus : state.loginStatus
-      // Very strange behavior if I remove the above line, 
-      // even though loginStatus hasn't been used anywhere! Upon removing, the app
-      // wouldn't load Main component on first load
+    loggedIn: state.loginStatus.loggedIn,
+    loading: state.loginStatus.loading,
+    loginStatus: state.loginStatus
+    // Very strange behavior if I remove the above line, 
+    // even though loginStatus hasn't been used anywhere! Upon removing, the app
+    // wouldn't load Main component on first load
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchAccessTokenLogin : (token) => dispatch(requestAccessTokenLogin(token)),
-    dispatchSetUserRole : (userRole) => dispatch(setUserRole(userRole)),
+    dispatchAccessTokenLogin: (token) => dispatch(requestAccessTokenLogin(token)),
+    dispatchSetUserRole: (userRole) => dispatch(setUserRole(userRole)),
     dispatchSetUserGoods: (userGoods) => dispatch(setUserGoods(userGoods))
   }
 }

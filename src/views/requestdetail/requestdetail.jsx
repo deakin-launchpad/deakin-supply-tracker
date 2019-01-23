@@ -24,7 +24,12 @@ class RequestDetail extends Component {
     getRequestDetail = () => {
         API.getRequestDetail(this.state, this.stateHandler);
 
-    }
+	}
+	
+	acceptBid = (requestId,bidId) => {
+		console.log("::::::::::::",requestId,bidId);
+		API.acceptBidRequest(requestId,bidId);
+	}
 
     componentDidMount() {
         this.getRequestDetail();
@@ -46,10 +51,10 @@ class RequestDetail extends Component {
 
 	// STATUS: true -> show Accept button
 	// STATUS: false -> show bid button
-	displayAcceptButton = (status) => {
+	displayAcceptButton = (status,requestId,bidId) => {
 		if(status) {
 			return (
-				<a href="#!" className="waves-effect waves-light btn">Accept</a>
+				<button className="waves-effect waves-light btn " onClick={()=>{this.acceptBid(requestId,bidId)}}>Accept</button>
 			)
 		} else {
 			return ("-")
@@ -57,7 +62,7 @@ class RequestDetail extends Component {
 	}
 
 	displayBidButton = (status) => {
-		if(!status) {
+		if(status) {
 			return (
 				<button className="waves-effect submitBtn waves-light btn modal-trigger" data-target="modal1">Create a Bid</button>
 			)
@@ -66,7 +71,6 @@ class RequestDetail extends Component {
 
     render() {
         if (this.state.requestData === "") return (<LoadingComponent />);
-        console.log("State", this.state)
         return (
             <div className="market">
                 <h2>Request Detail</h2>
@@ -102,13 +106,13 @@ class RequestDetail extends Component {
                                     <td>{value.priceOffered}</td>
                                     <td>{(value.dateOfDelivery).substring(0, 10)}</td>
                                     <td>{this.capitalizeString(value.bidStatus)}</td>
-                                    <td>{this.displayAcceptButton(this.state.flag)}</td>
+                                    <td>{this.displayAcceptButton(this.state.flag,this.state.requestId,value._id)}</td>
                                 </tr>
                             ))
                         }
                     </tbody>
                 </table>
-                {this.displayBidButton(this.state.flag)}
+                {this.displayBidButton(this.state.bidFlag)}
                 {this.renderModal()}
             </div>
         );

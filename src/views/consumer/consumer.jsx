@@ -42,16 +42,11 @@ class Consumer extends Component {
               </div>
             </div>
           </div>
-          <div className="row center">
+          <div className="row center hide">
             <button className="waves-effect submitBtn waves-light btn" id="buy-from-consumer-button" onClick={this.buyItems}>Buy From Importer</button>
             <br/>
             <button className="waves-effect submitBtn waves-light btn margin-top" id="consume-supplies-button">Consume Supplies</button>
             <br/>
-            <a href="/market" className="waves-effect submitBtn waves-light margin-top btn" id="market-button">Go To Market</a>
-            <br/>
-            <a href="/myBids" className="waves-effect submitBtn waves-light btn" id="bid-button">My Bids</a>
-            <br/>
-            <a href="/myRequests" className="waves-effect submitBtn waves-light btn" id="request-button">My Requests</a>
           </div>
         </div>
       </div>

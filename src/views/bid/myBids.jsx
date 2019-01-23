@@ -37,6 +37,7 @@ class MyBids extends Component {
               <th>Date of Delivery</th>
               <th>Bid Status</th>
               <th>Bid Date</th>
+              <th>Actions</th>
             </tr>
           </thead>
         </table>
@@ -55,6 +56,7 @@ class MyBids extends Component {
               <th>Bid Date</th>
               <th>Bid Status</th>
               <th>Date of Delivery</th>
+              <th>Action</th>
             </tr>
           </thead>
 
@@ -68,6 +70,7 @@ class MyBids extends Component {
                   <td>{value.creationDate.substring(0, 10)}</td>
                   <td>{value.bidStatus}</td>
                   <td>{value.dateOfDelivery.substring(0, 10)}</td>
+                  <td><a href={"/requestdetail/" + value.requestId._id} className="waves-effect waves-light btn">Details</a></td>
                 </tr>
               )
               )}

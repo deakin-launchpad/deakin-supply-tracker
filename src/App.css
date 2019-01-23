@@ -37,6 +37,30 @@
   margin:20px 0;
 }
 
+.profile-image-header{
+  width: 100px;
+  height: 100px;
+  margin-top: 30px; 
+  margin-bottom: 10px; 
+}
+
+.profile-image{
+  width: 125px;
+  height: 125px;
+  margin-bottom: 30px; 
+}
+.profile-field-label{
+    font-size: 15px;
+    margin: 10px 0 5px;
+    color: #3B8374;
+}
+.profile-field-data{
+  margin: 5px 0 10px;
+}
+.clear-fix{
+  clear: both;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
