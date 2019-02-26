@@ -57,8 +57,8 @@ class Header extends Component {
           <li><a href="/profile">My Profile</a></li>
           <li><a href="/market">Request Market</a></li>
           <li><a href="/myBids">My Bids</a></li>
-          <li><a href="/myRequests">My Pending Requests</a></li>
-          <li><a href="/ongoingRequests">My Ongoing Requests</a></li>
+          <li><a href="/myRequests">My Requests</a></li>
+          <li><a href="/ongoingRequests">My Completed Requests</a></li>
         </ul>
         <div className="navbar-fixed">
           <nav>

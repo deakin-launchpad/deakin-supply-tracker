@@ -30,6 +30,9 @@ class ItemHistory extends Component {
                 case "BUY_ITEMS":
                     result = "Bought Items";
                     break;
+                case "SUPPLY_ITEMS":
+                    result = "Supplied Items";
+                    break;
                 default:
                     result = "";
                     break
@@ -60,7 +63,7 @@ class ItemHistory extends Component {
     return (
         <div className="itemHistory">
         <h4>{this.state.temp[0].itemId.itemName}</h4>
-        <img className="itemImage" src="https://cdn0.woolworths.media/content/wowproductimages/large/663973.jpg" alt="itemImage" />
+        <img className="itemImage hide" src="https://cdn0.woolworths.media/content/wowproductimages/large/663973.jpg" alt="itemImage" />
             <section className="cd-timeline js-cd-timeline">
 		        <div className="cd-timeline__container">
                     {
@@ -73,7 +76,8 @@ class ItemHistory extends Component {
                                 <div className="cd-timeline__content js-cd-content">
                                     <ul>
                                         <li>Transaction Type: {this.transactionType(value.transactionType)}</li>
-                                        <li>Price: $ {value.itemId.price}</li>
+                                        <li>Original Price: $ {value.originalPrice}</li>
+                                        <li>Sold Price: $ {value.boughtPrice}</li>
                                         <li>Reciever: {value.ownerId.firstName+" "+value.ownerId.lastName+" ("+value.ownerId.role+")"}</li>
                                         <li>Sender: {value.supplierId.firstName+" "+value.supplierId.lastName+" ("+value.supplierId.role+")"}</li>
                                     </ul>

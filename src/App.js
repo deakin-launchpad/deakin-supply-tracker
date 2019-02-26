@@ -70,6 +70,9 @@ class App extends Component {
         case "bidAccepted":
           NotificationManager.info('Your bid was accepted by the Orderer');
           break;
+          case "noCropsSelf":
+          NotificationManager.error('You dont have sufficient crops');
+          break;
         default:
           break;
       }

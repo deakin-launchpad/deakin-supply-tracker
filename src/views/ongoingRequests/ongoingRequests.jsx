@@ -27,7 +27,7 @@ class OngoingRequest extends Component {
     if (this.state.statusCode === '') return (<LoadingComponent />);
     else if (this.state.statusCode === 200 && this.state.temp.length === 0) return (
       <div>
-        <h2>My Ongoing Requests</h2>
+        <h2>My Completed Requests</h2>
         <table className="highlight responsive-table">
           <thead>
             <tr>
