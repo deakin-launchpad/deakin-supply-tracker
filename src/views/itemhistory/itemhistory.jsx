@@ -2,95 +2,103 @@ import React, { Component } from 'react';
 import API from 'helpers/api.js';
 import LocationImage from 'images/cd-icon-location.svg';
 import LoadingComponent from 'components/loading/loading.jsx';
+import StarRatings from 'react-star-ratings';
 
 class ItemHistory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          itemId:this.props.match.params.itemId,
-          temp: []
+            itemId: this.props.match.params.itemId,
+            temp: []
         }
-      }
+    }
 
-      stateHandler = (temp) => {
+    stateHandler = (temp) => {
         this.setState(temp)
-      }
+    }
 
-      getItemHistoryDetails = () => {
+    getItemHistoryDetails = () => {
         API.getItemHistory(this.state, this.stateHandler);
 
-      }
+    }
 
-      transactionType = (value) => {
-          let result;
-          switch(value){
-                case "CREATE_ITEMS":
-                    result = "Created Items";
-                    break;
-                case "BUY_ITEMS":
-                    result = "Bought Items";
-                    break;
-                case "SUPPLY_ITEMS":
-                    result = "Supplied Items";
-                    break;
-                default:
-                    result = "";
-                    break
-          }
-          return result;
-      }
+    transactionType = (value) => {
+        let result;
+        switch (value) {
+            case "CREATE_ITEMS":
+                result = "Created Items";
+                break;
+            case "BUY_ITEMS":
+                result = "Bought Items";
+                break;
+            case "SUPPLY_ITEMS":
+                result = "Supplied Items";
+                break;
+            default:
+                result = "";
+                break
+        }
+        return result;
+    }
 
-       itemData (){
-        
-       }
+    itemData() {
 
-      componentDidMount(){
+    }
+
+    componentDidMount() {
         this.getItemHistoryDetails();
-      }
+    }
 
-      componentWillUpdate(){
-        
-        
-      }
-
-      componentDidUpdate(){
-      }
-  
+    componentWillUpdate() {
 
 
-  render() {
-      if (this.state.temp.length === 0) return (<LoadingComponent/>);
-    return (
-        <div className="itemHistory">
-        <h4>{this.state.temp[0].itemId.itemName}</h4>
-        <img className="itemImage hide" src="https://cdn0.woolworths.media/content/wowproductimages/large/663973.jpg" alt="itemImage" />
-            <section className="cd-timeline js-cd-timeline">
-		        <div className="cd-timeline__container">
-                    {
-                        this.state.temp.map((value)=>(
-                            <div key = {value._id} className="cd-timeline__block js-cd-block">
-                                <div className="cd-timeline__img cd-timeline__img--picture js-cd-img">
-                                    <img src={LocationImage} alt=""/>
+    }
+
+    componentDidUpdate() {
+    }
+
+
+
+    render() {
+        if (this.state.temp.length === 0) return (<LoadingComponent />);
+        return (
+            <div className="itemHistory">
+                <h4>{this.state.temp[0].itemId.itemName}</h4>
+                <img className="itemImage" src={this.state.temp[0].itemId.image} alt="itemImage" />
+                <StarRatings
+                    rating={this.state.temp[0].itemId.rating}
+                    starRatedColor="rgb(34,139,34)"
+                    numberOfStars={5}
+                    name='rating'
+                    starDimension='30px'
+                />
+                <section className="cd-timeline js-cd-timeline">
+                    <div className="cd-timeline__container">
+                        {
+                            this.state.temp.map((value) => (
+                                <div key={value._id} className="cd-timeline__block js-cd-block">
+                                    <div className="cd-timeline__img cd-timeline__img--picture js-cd-img">
+                                        <img src={LocationImage} alt="" />
+                                    </div>
+
+                                    <div className="cd-timeline__content js-cd-content">
+                                        <ul>
+                                            <li>Transaction Type: {this.transactionType(value.transactionType)}</li>
+                                            <li>Original Price: $ {value.originalPrice}</li>
+                                            <li>Sold Price: $ {value.boughtPrice}</li>
+                                            <li>Reciever: {value.ownerId.firstName + " " + value.ownerId.lastName + " (" + value.ownerId.role + ")"}</li>
+                                            <li>Sender: {value.supplierId.firstName + " " + value.supplierId.lastName + " (" + value.supplierId.role + ")"}</li>
+                                        </ul>
+                                        <span className="cd-timeline__date">{(value.currentTime).substring(0, 10)}</span>
+                                    </div>
                                 </div>
-                       
-                                <div className="cd-timeline__content js-cd-content">
-                                    <ul>
-                                        <li>Transaction Type: {this.transactionType(value.transactionType)}</li>
-                                        <li>Original Price: $ {value.originalPrice}</li>
-                                        <li>Sold Price: $ {value.boughtPrice}</li>
-                                        <li>Reciever: {value.ownerId.firstName+" "+value.ownerId.lastName+" ("+value.ownerId.role+")"}</li>
-                                        <li>Sender: {value.supplierId.firstName+" "+value.supplierId.lastName+" ("+value.supplierId.role+")"}</li>
-                                    </ul>
-                                    <span className="cd-timeline__date">{(value.currentTime).substring(0, 10)}</span>
-                                </div>
-                            </div> 
-                        ))
-                    }
-                </div>
-            </section>
-        </div>
-    );
-  }
+                            ))
+                        }
+                    </div>
+                </section>
+            </div>
+        );
+    }
 }
 
 export default ItemHistory;
